@@ -1,0 +1,4 @@
+websockets==8.0.2
+attrs
+pickledb
+numpy
