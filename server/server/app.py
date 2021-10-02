@@ -28,6 +28,8 @@ class PlayerConnection:
 
     @property
     def player(self) -> Optional[Player]:
+        if not self._player_entry:
+            return None
         return self._player_entry.player
 
     @property
