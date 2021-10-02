@@ -17,6 +17,12 @@ __all__ = [
 _logger = logging.getLogger(__name__)
 
 
+class NotAuthorizedError(Exception):
+    def __init__(self):
+        self.error_code = "not_authorized"
+        super().__init__(self.error_code)
+
+
 class PlayerConnection:
     def __init__(self, socket_identifier: str):
         self._socket_identifier = socket_identifier
@@ -63,6 +69,8 @@ class Application:
 
     @asynccontextmanager
     async def player_change(self, connection: PlayerConnection) -> Player:
+        if not connection.player_entry:
+            raise NotAuthorizedError
         player = connection.player
         yield player
         await self._player_db.save(connection.player_entry)
@@ -84,22 +92,26 @@ class Application:
             await handler(connection, message)
         else:
             _logger.warning(f"Invalid player message {message_type}")
+            connection.send(msg.ServerError(error="invalid_message"))
 
     async def on_player_hello(self, connection: PlayerConnection, message: msg.ClientHello):
-        entry = await self._player_db.find(message.token)
-        if entry is not None:
-            player = entry.player
+        if connection.player_entry is not None:
+            connection.send(msg.ServerError(error="already_authorized"))
         else:
-            player = self._game.create_new_player(message.username)
-            entry = PlayerDbEntry(
-                key=message.token,
-                auth_token=message.token,
-                player=player
-            )
+            entry = await self._player_db.find(message.token)
+            if entry is not None:
+                player = entry.player
+            else:
+                player = self._game.create_new_player(message.username)
+                entry = PlayerDbEntry(
+                    key=message.token,
+                    auth_token=message.token,
+                    player=player
+                )
 
-        connection.set_player_entry(entry)
-        await self._player_db.save(connection.player_entry)
-        connection.send(msg.ServerHello(player))
+            connection.set_player_entry(entry)
+            await self._player_db.save(connection.player_entry)
+            connection.send(msg.ServerHello(player))
 
     async def on_player_roll(self, connection: PlayerConnection, message: msg.ClientRoll):
         try:
@@ -109,47 +121,51 @@ class Application:
                     rolled_item=player.current_undecided_roll_item,
                     player=player
                 ))
-        except GameError as err:
+        except (NotAuthorizedError, GameError) as err:
             _logger.warning(err)
-            connection.send(msg.ServerRollFailed(error=err.error_code))
+            connection.send(msg.ServerError(error=err.error_code))
 
     async def on_player_accept(self, connection: PlayerConnection, message: msg.ClientAcceptRoll):
         try:
             async with self.player_change(connection) as player:
                 self._game.accept_roll(player)
-                connection.send(msg.ServerRollDecided(player))
-        except GameError as err:
+                connection.send(msg.ServerRollDecided(player, accepted=True))
+        except (NotAuthorizedError, GameError) as err:
             _logger.warning(err)
+            connection.send(msg.ServerError(error=err.error_code))
 
     async def on_player_decline(self, connection: PlayerConnection, message: msg.ClientDeclineRoll):
         try:
             async with self.player_change(connection) as player:
                 self._game.accept_roll(player)
-                connection.send(msg.ServerRollDecided(player))
-        except GameError as err:
+                connection.send(msg.ServerRollDecided(player, accepted=False))
+        except (NotAuthorizedError, GameError) as err:
             _logger.warning(err)
+            connection.send(msg.ServerError(error=err.error_code))
 
     async def gold_update_routine(self):
+        interval = self._game.income_update_interval
+
         while True:
-            # await asyncio.sleep(self._game.settings.income_period_seconds)
-            await asyncio.sleep(5)
-            next_update_time = (
-                datetime.datetime.now()
-                + datetime.timedelta(seconds=self._game.settings.income_period_seconds)
-            )
+            await asyncio.sleep(interval)
+            next_update_time = datetime.datetime.now() + datetime.timedelta(seconds=interval)
             for connection in self._active_connections:
                 player = connection.player
                 if not player:
                     continue
 
-                async with self.player_change(connection) as player:
-                    old_gold = player.gold
-                    self._game.update_player_gold(player)
-                    new_gold = player.gold
+                try:
+                    async with self.player_change(connection) as player:
+                        old_gold = player.gold
+                        self._game.update_player_gold(player)
+                        new_gold = player.gold
 
-                    connection.send(msg.ServerGoldUpdated(
-                        old_gold=old_gold,
-                        new_gold=new_gold,
-                        next_update_time=next_update_time
-                    ))
-                    await self._player_db.save(connection.player_entry)
+                        connection.send(msg.ServerGoldUpdated(
+                            old_gold=old_gold,
+                            new_gold=new_gold,
+                            next_update_time=next_update_time
+                        ))
+                        await self._player_db.save(connection.player_entry)
+                except (NotAuthorizedError, GameError) as err:
+                    _logger.warning(err)
+                    connection.send(msg.ServerError(error=err.error_code))

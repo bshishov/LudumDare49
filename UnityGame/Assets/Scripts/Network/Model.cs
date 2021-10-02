@@ -17,8 +17,9 @@ namespace Network
         
         // Server to client
         public const string ServerHello = "server_hello";
+        public const string ServerError = "error";
         public const string ServerGoldUpdated = "gold_updated";
-        public const string ServerRollFailed = "roll_failed";
+        
         public const string ServerRollSuccess = "roll_success";
         public const string ServerRollDecided = "roll_decided";
     }
@@ -26,13 +27,31 @@ namespace Network
     namespace Game
     {
         [Serializable]
+        public struct ItemData
+        {
+            public string id;
+            public int power;
+            public string slot;
+            public string rarity;
+        }
+        
+        [Serializable]
         public struct RolledItem
         {
+            public ItemData item;
+            public string quality;
+            public float obtained_at;
+            public string merchant;
         }
         
         [Serializable]
         public struct Player
         {
+            public string username;
+            public int gold;
+            public float last_gold_update_time;
+            public RolledItem[] items;
+            public RolledItem? current_undecided_roll_item;
         }
     }
 
@@ -86,7 +105,7 @@ namespace Network
         }
         
         [Serializable]
-        public struct ServerRollFailed : IMessage
+        public struct ServerError : IMessage
         {
             public string error;
         }
@@ -102,6 +121,7 @@ namespace Network
         public struct ServerRollDecided : IMessage
         {
             public Game.Player player;
+            public bool accepted;
         }
     }
 }

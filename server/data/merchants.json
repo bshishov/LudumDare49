@@ -1,0 +1,68 @@
+[
+  {
+    "id": "default",
+    "roll_price": 100,
+    "quality_distribution": {
+      "shitty": 0.35,
+      "bad": 0.25,
+      "normal": 0.25,
+      "good": 0.1,
+      "divine": 0.05
+    },
+    "items": [
+      {
+        "item": "debug_head",
+        "probability": 0.2
+      },
+      {
+        "item": "debug_body",
+        "probability": 0.2
+      },
+      {
+        "item": "debug_boots",
+        "probability": 0.2
+      },
+      {
+        "item": "debug_weapon",
+        "probability": 0.2
+      },
+      {
+        "item": "debug_trinket",
+        "probability": 0.2
+      }
+    ]
+  },
+  {
+    "id": "default",
+    "roll_price": 100,
+    "quality_distribution": {
+      "shitty": 0.35,
+      "bad": 0.25,
+      "normal": 0.25,
+      "good": 0.1,
+      "divine": 0.05
+    },
+    "items": [
+      {
+        "item": "debug_head",
+        "probability": 0.2
+      },
+      {
+        "item": "debug_body",
+        "probability": 0.2
+      },
+      {
+        "item": "debug_boots",
+        "probability": 0.2
+      },
+      {
+        "item": "debug_weapon",
+        "probability": 0.2
+      },
+      {
+        "item": "debug_trinket",
+        "probability": 0.2
+      }
+    ]
+  }
+]

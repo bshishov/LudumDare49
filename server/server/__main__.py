@@ -3,6 +3,7 @@ import argparse
 import asyncio
 import logging
 import logging.config
+import os
 
 from websockets import WebSocketServerProtocol, serve, ConnectionClosedError
 
@@ -14,7 +15,8 @@ from server.messages import (
     server_message_to_str
 )
 from server.db import PickleDb
-from server.game import Game, GameSettings
+from server.game import Game
+from server.data import load_merchants, load_items, load_game_settings
 
 _logger = logging.getLogger(__name__)
 
@@ -69,7 +71,7 @@ class WebsocketHandler:
             await websocket.send(message)
 
 
-def main(host: str, port: int, db_path: str, settings_path: str):
+def main(host: str, port: int, db_path: str, data_path: str):
     logging_config = {
         'version': 1,
         'disable_existing_loggers': False,
@@ -99,8 +101,17 @@ def main(host: str, port: int, db_path: str, settings_path: str):
     logging.getLogger('websockets.server').setLevel(logging.ERROR)
     logging.getLogger('websockets.protocol').setLevel(logging.ERROR)
 
-    _logger.info(f"Loading settings from {settings_path}")
-    game = Game(GameSettings.from_json_file(settings_path))
+    _logger.info(f"Loading data from {data_path}")
+
+    items = load_items(os.path.join(data_path, "items.json"))
+    merchants = load_merchants(os.path.join(data_path, "merchants.json"))
+    game_settings = load_game_settings(os.path.join(data_path, "game.json"))
+
+    game = Game(
+        settings=game_settings,
+        merchants=merchants,
+        items=items
+    )
 
     _logger.info(f"Loading db from {db_path}")
     application = Application(
@@ -125,7 +136,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--port', type=int, default=6789, help='Port')
     parser.add_argument('--host', type=str, default='localhost', help='WebSockets host')
-    parser.add_argument('--settings', type=str, help='path to game settings')
+    parser.add_argument('--data', type=str, default='data/', help='path to game data')
     parser.add_argument('--db', type=str, default='players.db', help='path to db')
     arguments = parser.parse_args()
-    main(arguments.host, arguments.port, arguments.db, arguments.settings)
+    main(arguments.host, arguments.port, arguments.db, arguments.data)

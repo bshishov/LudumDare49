@@ -5,12 +5,19 @@ from enum import Enum
 import numpy as np
 from attr import dataclass
 
+from server.data import (
+    Merchant,
+    MerchantItemData,
+    ItemData,
+    GameSettingsData,
+    Slot
+)
+
 __all__ = [
     "GameError",
     "Player",
     "RolledItem",
     "Game",
-    "GameSettings"
 ]
 
 
@@ -38,14 +45,6 @@ class NoActiveRoll(GameError):
     ERROR_CODE = "no_active_roll"
 
 
-class Slot(Enum):
-    HEAD = "head"
-    BODY = "body"
-    WEAPON = "weapon"
-    TRINKET = "trinket"
-    BOOTS = "boots"
-
-
 class Quality(Enum):
     SHITTY = "shitty"
     BAD = "bad"
@@ -58,41 +57,12 @@ QUALITY_MULTIPLIER = {"shitty": 0.7, "bad": 0.85, "normal": 1, "good": 1.2, "div
 QUALITY_DISTRIBUTION = {"shitty": 0.35, "bad": 0.25, "normal": 0.25, "good": 0.1, "divine": 0.05}
 
 
-class Rarity(Enum):
-    COMMON = "common"
-    UNCOMMON = "uncommon"
-    RARE = "rare"
-    EPIC = "epic"
-    LEGENDARY = "legendary"
-    MYTHICAL = "mythical"
-
-
-@dataclass
-class BaseItem:
-    id: str
-    power: int
-    slot: Slot
-    rarity: Rarity
-
-
-@dataclass
-class MerchantItem:
-    item_base: BaseItem
-    probability: float
-
-
-@dataclass
-class Merchant:
-    id: str
-    items: List[MerchantItem]
-    roll_price: int
-
-
 @dataclass
 class RolledItem:
-    item: BaseItem
+    item: ItemData
     quality: Quality
     obtained_at: datetime
+    merchant: str
 
     @property
     def power(self):
@@ -115,57 +85,35 @@ class Player:
         return power + 10
 
     def get_item_in_slot(self, slot: Slot) -> Optional[RolledItem]:
-        for i in self.items:
-            if i.item.slot == slot:
-                return i
+        for rolled_item in self.items:
+            if rolled_item.item.slot == slot:
+                return rolled_item
         return None
 
 
-@dataclass
-class GameSettings:
-    income_multiplier: float
-    income_period_seconds: float
-    initial_gold: int
-    roll_price: int
-
-    @staticmethod
-    def from_json_file(path: str):
-        import json
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-            return GameSettings(
-                income_multiplier=data["INCOME_MULTIPLIER"],
-                income_period_seconds=data["INCOME_PERIOD_MINUTES"] * 60,
-                initial_gold=data["INITIAL_BALANCE"],
-                roll_price =data["ROLLING_PRICE"],
-            )
-
-
 class Game:
-    def __init__(self, settings: GameSettings):
-        self.settings = settings
-        self._merchants = {
-            "default": Merchant(
-                id="default",
-                items=[
-                    MerchantItem(
-                        item_base=BaseItem(
-                            id="generic_sword",
-                            power=10,
-                            slot=Slot.WEAPON,
-                            rarity=Rarity.LEGENDARY
-                        ),
-                        probability=1
-                    )
-                ],
-                roll_price=settings.roll_price
-            )
-        }
+    def __init__(
+            self,
+            settings: GameSettingsData,
+            merchants: List[Merchant],
+            items: List[ItemData]
+    ):
+        self._settings = settings
+        self._items = {item.id: item for item in items}
+        self._merchants = {m.id: m for m in merchants}
+
+        for merchant in merchants:
+            for item in merchant.items:
+                assert item.item in self._items, f"Unknown item {item.item}"
+
+    @property
+    def income_update_interval(self):
+        return self._settings.income_period_seconds
 
     def create_new_player(self, username: str) -> Player:
         return Player(
             username=username,
-            gold=self.settings.initial_gold,
+            gold=self._settings.initial_gold,
             items=[],
             last_gold_update_time=datetime.now(),
             current_undecided_roll_item=None
@@ -173,13 +121,13 @@ class Game:
 
     def update_player_gold(self, player: Player):
         player.last_gold_updated_time = datetime.now()
-        player.gold += round(player.total_power * self.settings.income_multiplier)
+        player.gold += round(player.total_power * self._settings.power_income_multiplier)
 
     def roll_item(self, merchant: Merchant) -> RolledItem:
         item_probabilities = np.array(list(i.probability for i in merchant.items), np.float32)
         item_probabilities /= np.sum(item_probabilities)
 
-        item: MerchantItem = np.random.choice(merchant.items, 1, p=item_probabilities)[0]
+        item: MerchantItemData = np.random.choice(merchant.items, 1, p=item_probabilities)[0]
 
         quality_name = np.random.choice(
             list(QUALITY_DISTRIBUTION.keys()), 1,
@@ -187,9 +135,10 @@ class Game:
         )[0]
 
         return RolledItem(
-            item=item.item_base,
+            item=self._items[item.item],
             quality=Quality(quality_name),
-            obtained_at=datetime.now()
+            obtained_at=datetime.now(),
+            merchant=merchant.id
         )
 
     def roll_item_for_player(self, player: Player, merchant_id: str):

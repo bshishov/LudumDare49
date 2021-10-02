@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Network.Messages;
 using Newtonsoft.Json;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using Utils;
 using Debug = UnityEngine.Debug;
@@ -23,8 +22,8 @@ namespace Network
             
             // Server
             {MessageTypes.ServerHello, typeof(ServerHello)},
+            {MessageTypes.ServerError, typeof(ServerError)},
             {MessageTypes.ServerGoldUpdated, typeof(ServerGoldUpdated)},
-            {MessageTypes.ServerRollFailed, typeof(ServerRollFailed)},
             {MessageTypes.ServerRollSuccess, typeof(ServerRollSuccess)},
             {MessageTypes.ServerRollDecided, typeof(ServerRollDecided)},
         };
@@ -82,16 +81,9 @@ namespace Network
         {
             if (_connection != null && _connection.IsConnected)
             {
-                if (ClassToType.TryGetValue(typeof(T), out var messageName))
-                {
-                    var serialized = JsonConvert.SerializeObject(message);
-                    Debug.Log(serialized);
-                    _connection.Send(serialized);
-                }
-                else
-                {
-                    Debug.LogWarningFormat("Cant resolve message name for type: {0}", typeof(T));
-                }
+                var serialized = JsonConvert.SerializeObject(message);
+                Debug.Log(serialized);
+                _connection.Send(serialized);
             }
         }
 

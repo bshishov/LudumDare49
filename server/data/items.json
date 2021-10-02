@@ -1,0 +1,32 @@
+[
+  {
+    "id": "debug_head",
+    "power": 10,
+    "slot": "head",
+    "rarity": "common"
+  },
+  {
+    "id": "debug_body",
+    "power": 10,
+    "slot": "body",
+    "rarity": "rare"
+  },
+  {
+    "id": "debug_boots",
+    "power": 10,
+    "slot": "boots",
+    "rarity": "rare"
+  },
+  {
+    "id": "debug_weapon",
+    "power": 10,
+    "slot": "weapon",
+    "rarity": "legendary"
+  },
+  {
+    "id": "debug_trinket",
+    "power": 10,
+    "slot": "trinket",
+    "rarity": "legendary"
+  }
+]

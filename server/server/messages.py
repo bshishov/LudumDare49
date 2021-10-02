@@ -19,7 +19,7 @@ __all__ = [
     # Server Messages
     "ServerHello",
     "ServerRollSuccess",
-    "ServerRollFailed",
+    "ServerError",
     "ServerGoldUpdated",
     "ServerRollDecided",
 
@@ -90,18 +90,18 @@ class ServerHello(ServerMessage):
     player: Player
 
 
+@register_message("error")
+@dataclass(slots=True)
+class ServerError(ServerMessage):
+    error: str
+
+
 @register_message("gold_updated")
 @dataclass(slots=True)
 class ServerGoldUpdated(ServerMessage):
     old_gold: int = attrib(validator=instance_of(int))
     new_gold: int = attrib(validator=instance_of(int))
     next_update_time: datetime = attrib(validator=instance_of(datetime))
-
-
-@register_message("roll_failed")
-@dataclass(slots=True)
-class ServerRollFailed(ServerMessage):
-    error: str
 
 
 @register_message("roll_success")
@@ -115,6 +115,7 @@ class ServerRollSuccess(ServerMessage):
 @dataclass(slots=True)
 class ServerRollDecided(ServerMessage):
     player: Player
+    accepted: bool
 
 
 _REVERSED_PLAYER_MESSAGE_TYPES = {v: k for k, v in _PLAYER_MESSAGE_TYPES.items()}
