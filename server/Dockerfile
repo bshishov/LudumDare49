@@ -9,4 +9,4 @@ EXPOSE 6789
 
 ENV PYTHONPATH=/opt/app:/opt/app/server
 
-CMD ["python", "-m", "server", "--host", "0.0.0.0", "--port", "6789", "--settings", "params.json"]
+CMD ["python", "-m", "server", "--host", "0.0.0.0", "--port", "6789"]
