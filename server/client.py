@@ -16,7 +16,7 @@ async def main(uri):
 
             logging.info(f'Bot connected')
 
-            await send(msg.PlayerHello(
+            await send(msg.ClientHello(
                 username="123",
                 token="123"
             ))

@@ -101,7 +101,7 @@ class RolledItem:
 
 @dataclass
 class Player:
-    id: str
+    username: str
     gold: int
     last_gold_update_time: datetime
     items: Dict[Slot, RolledItem]
@@ -146,9 +146,9 @@ class Game:
             )
         }
 
-    def create_new_player(self, id: str) -> Player:
+    def create_new_player(self, username: str) -> Player:
         return Player(
-            id=id,
+            username=username,
             gold=self.settings.initial_gold,
             items={},
             last_gold_update_time=datetime.now(),

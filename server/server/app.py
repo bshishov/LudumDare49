@@ -53,10 +53,10 @@ class Application:
         self._active_connections: Set[PlayerConnection] = set()
         self._player_db = db
         self._message_handlers = {
-            msg.PlayerHello: self.on_player_hello,
-            msg.PlayerRoll: self.on_player_roll,
-            msg.PlayerAcceptRoll: self.on_player_accept,
-            msg.PlayerDeclineRoll: self.on_player_decline,
+            msg.ClientHello: self.on_player_hello,
+            msg.ClientRoll: self.on_player_roll,
+            msg.ClientAcceptRoll: self.on_player_accept,
+            msg.ClientDeclineRoll: self.on_player_decline,
         }
 
     @asynccontextmanager
@@ -83,12 +83,12 @@ class Application:
         else:
             _logger.warning(f"Invalid player message {message_type}")
 
-    async def on_player_hello(self, connection: PlayerConnection, message: msg.PlayerHello):
+    async def on_player_hello(self, connection: PlayerConnection, message: msg.ClientHello):
         entry = await self._player_db.find(message.token)
         if entry is not None:
             player = entry.player
         else:
-            player = self._game.create_new_player(message.token)
+            player = self._game.create_new_player(message.username)
             entry = PlayerDbEntry(
                 key=message.token,
                 auth_token=message.token,
@@ -99,7 +99,7 @@ class Application:
         await self._player_db.save(connection.player_entry)
         connection.send(msg.ServerHello(player))
 
-    async def on_player_roll(self, connection: PlayerConnection, message: msg.PlayerRoll):
+    async def on_player_roll(self, connection: PlayerConnection, message: msg.ClientRoll):
         try:
             async with self.player_change(connection) as player:
                 self._game.roll_item_for_player(player, message.merchant)
@@ -111,7 +111,7 @@ class Application:
             _logger.warning(err)
             connection.send(msg.ServerRollFailed(reason=err.error_code))
 
-    async def on_player_accept(self, connection: PlayerConnection, message: msg.PlayerAcceptRoll):
+    async def on_player_accept(self, connection: PlayerConnection, message: msg.ClientAcceptRoll):
         try:
             async with self.player_change(connection) as player:
                 self._game.accept_roll(player)
@@ -119,7 +119,7 @@ class Application:
         except GameError as err:
             _logger.warning(err)
 
-    async def on_player_decline(self, connection: PlayerConnection, message: msg.PlayerDeclineRoll):
+    async def on_player_decline(self, connection: PlayerConnection, message: msg.ClientDeclineRoll):
         try:
             async with self.player_change(connection) as player:
                 self._game.accept_roll(player)

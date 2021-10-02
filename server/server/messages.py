@@ -10,14 +10,13 @@ from server.game import Player, RolledItem
 
 __all__ = [
     # Player Messages
-    "PlayerHello",
-    "PlayerRoll",
-    "PlayerAcceptRoll",
-    "PlayerDeclineRoll",
+    "ClientHello",
+    "ClientRoll",
+    "ClientAcceptRoll",
+    "ClientDeclineRoll",
 
     # Server Messages
     "ServerHello",
-    "ServerAuthFailed",
     "ServerRollSuccess",
     "ServerRollFailed",
     "ServerGoldUpdated",
@@ -61,26 +60,26 @@ def register_message(name: str):
 
 @register_message("hello")
 @dataclass(slots=True)
-class PlayerHello(PlayerMessage):
+class ClientHello(PlayerMessage):
     username: str
     token: str
 
 
 @register_message("roll")
 @dataclass(slots=True)
-class PlayerRoll(PlayerMessage):
+class ClientRoll(PlayerMessage):
     merchant: str
 
 
-@register_message("accept")
+@register_message("accept_roll")
 @dataclass(slots=True)
-class PlayerAcceptRoll(PlayerMessage):
+class ClientAcceptRoll(PlayerMessage):
     pass
 
 
-@register_message("accept")
+@register_message("decline_roll")
 @dataclass(slots=True)
-class PlayerDeclineRoll(PlayerMessage):
+class ClientDeclineRoll(PlayerMessage):
     pass
 
 
@@ -88,12 +87,6 @@ class PlayerDeclineRoll(PlayerMessage):
 @dataclass(slots=True)
 class ServerHello(ServerMessage):
     player_state: Player
-
-
-@register_message("auth_failed")
-@dataclass(slots=True)
-class ServerAuthFailed(ServerMessage):
-    reason: int
 
 
 @register_message("gold_updated")
@@ -117,7 +110,7 @@ class ServerRollSuccess(ServerMessage):
     player_state: Player
 
 
-@register_message("decided")
+@register_message("roll_decided")
 @dataclass(slots=True)
 class ServerRollDecided(ServerMessage):
     player_state: Player
