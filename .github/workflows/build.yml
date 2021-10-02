@@ -17,4 +17,4 @@ jobs:
         registry: ${{ secrets.DOCKER_REGISTRY }}
         path: ./server/
         tag_with_ref: true
-        repository: fruitwars-server
+        repository: unsmith-server
