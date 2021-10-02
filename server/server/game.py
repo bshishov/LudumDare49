@@ -1,4 +1,4 @@
-from typing import Optional, List, ClassVar, Dict
+from typing import Optional, List, ClassVar
 from datetime import datetime
 from enum import Enum
 
@@ -31,11 +31,11 @@ class NotEnoughGold(GameError):
 
 
 class RollIsAlreadyActive(GameError):
-    ERROR_CODE = "already_rolled"
+    ERROR_CODE = "roll_is_already_active"
 
 
 class NoActiveRoll(GameError):
-    ERROR_CODE = "not_active_roll"
+    ERROR_CODE = "no_active_roll"
 
 
 class Slot(Enum):
@@ -96,7 +96,7 @@ class RolledItem:
 
     @property
     def power(self):
-        return self.item.power * QUALITY_MULTIPLIER[self.quality.name]
+        return self.item.power * QUALITY_MULTIPLIER[self.quality.value]
 
 
 @dataclass
@@ -104,7 +104,7 @@ class Player:
     username: str
     gold: int
     last_gold_update_time: datetime
-    items: Dict[Slot, RolledItem]
+    items: List[RolledItem]
     current_undecided_roll_item: Optional[RolledItem]
 
     @property
@@ -113,6 +113,12 @@ class Player:
         for item in self.items:
             power += item.power
         return power + 10
+
+    def get_item_in_slot(self, slot: Slot) -> Optional[RolledItem]:
+        for i in self.items:
+            if i.item.slot == slot:
+                return i
+        return None
 
 
 @dataclass
@@ -141,7 +147,17 @@ class Game:
         self._merchants = {
             "default": Merchant(
                 id="default",
-                items=[],
+                items=[
+                    MerchantItem(
+                        item_base=BaseItem(
+                            id="generic_sword",
+                            power=10,
+                            slot=Slot.WEAPON,
+                            rarity=Rarity.LEGENDARY
+                        ),
+                        probability=1
+                    )
+                ],
                 roll_price=settings.roll_price
             )
         }
@@ -150,18 +166,18 @@ class Game:
         return Player(
             username=username,
             gold=self.settings.initial_gold,
-            items={},
+            items=[],
             last_gold_update_time=datetime.now(),
             current_undecided_roll_item=None
         )
 
     def update_player_gold(self, player: Player):
         player.last_gold_updated_time = datetime.now()
-        player.gold += player.total_power * self.settings.income_multiplier
+        player.gold += round(player.total_power * self.settings.income_multiplier)
 
     def roll_item(self, merchant: Merchant) -> RolledItem:
-        item_probabilities = np.asarray(i.probability for i in merchant.items)
-        item_probabilities /= item_probabilities.sum()
+        item_probabilities = np.array(list(i.probability for i in merchant.items), np.float32)
+        item_probabilities /= np.sum(item_probabilities)
 
         item: MerchantItem = np.random.choice(merchant.items, 1, p=item_probabilities)[0]
 
@@ -197,7 +213,11 @@ class Game:
             raise NoActiveRoll
 
         player.current_undecided_roll_item = None
-        player.items[rolled_item.item.slot] = rolled_item
+
+        previous_item_in_same_slot = player.get_item_in_slot(rolled_item.item.slot)
+        if previous_item_in_same_slot:
+            player.items.remove(previous_item_in_same_slot)
+        player.items.append(rolled_item)
 
     def decline_roll(self, player: Player):
         rolled_item = player.current_undecided_roll_item

@@ -105,11 +105,11 @@ class Application:
                 self._game.roll_item_for_player(player, message.merchant)
                 connection.send(msg.ServerRollSuccess(
                     rolled_item=player.current_undecided_roll_item,
-                    player_state=player
+                    player=player
                 ))
         except GameError as err:
             _logger.warning(err)
-            connection.send(msg.ServerRollFailed(reason=err.error_code))
+            connection.send(msg.ServerRollFailed(error=err.error_code))
 
     async def on_player_accept(self, connection: PlayerConnection, message: msg.ClientAcceptRoll):
         try:
@@ -129,7 +129,8 @@ class Application:
 
     async def gold_update_routine(self):
         while True:
-            await asyncio.sleep(self._game.settings.income_period_seconds)
+            # await asyncio.sleep(self._game.settings.income_period_seconds)
+            await asyncio.sleep(5)
             next_update_time = (
                 datetime.datetime.now()
                 + datetime.timedelta(seconds=self._game.settings.income_period_seconds)

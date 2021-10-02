@@ -1,8 +1,9 @@
 from typing import Dict, Type
 import json
-import datetime
+from datetime import datetime
 
-from attr import dataclass
+from attr import dataclass, attrib
+from attr.validators import instance_of
 
 from server.spec import spec
 from server.game import Player, RolledItem
@@ -61,14 +62,14 @@ def register_message(name: str):
 @register_message("hello")
 @dataclass(slots=True)
 class ClientHello(PlayerMessage):
-    username: str
-    token: str
+    username: str = attrib(validator=instance_of(str))
+    token: str = attrib(validator=instance_of(str))
 
 
 @register_message("roll")
 @dataclass(slots=True)
 class ClientRoll(PlayerMessage):
-    merchant: str
+    merchant: str = attrib(validator=instance_of(str))
 
 
 @register_message("accept_roll")
@@ -83,37 +84,37 @@ class ClientDeclineRoll(PlayerMessage):
     pass
 
 
-@register_message("hello")
+@register_message("server_hello")
 @dataclass(slots=True)
 class ServerHello(ServerMessage):
-    player_state: Player
+    player: Player
 
 
 @register_message("gold_updated")
 @dataclass(slots=True)
 class ServerGoldUpdated(ServerMessage):
-    old_gold: int
-    new_gold: int
-    next_update_time: datetime.datetime
+    old_gold: int = attrib(validator=instance_of(int))
+    new_gold: int = attrib(validator=instance_of(int))
+    next_update_time: datetime = attrib(validator=instance_of(datetime))
 
 
 @register_message("roll_failed")
 @dataclass(slots=True)
 class ServerRollFailed(ServerMessage):
-    reason: str
+    error: str
 
 
 @register_message("roll_success")
 @dataclass(slots=True)
 class ServerRollSuccess(ServerMessage):
     rolled_item: RolledItem
-    player_state: Player
+    player: Player
 
 
 @register_message("roll_decided")
 @dataclass(slots=True)
 class ServerRollDecided(ServerMessage):
-    player_state: Player
+    player: Player
 
 
 _REVERSED_PLAYER_MESSAGE_TYPES = {v: k for k, v in _PLAYER_MESSAGE_TYPES.items()}
