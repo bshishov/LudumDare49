@@ -1,18 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UI;
 
 public class Roll : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject UIItem;
+    public GameObject ItemSlot;
+    public GameObject Price;
+    public GameObject RollButton;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        ItemSlot.SetActive(false);
+    }
+    public void SetItem(Item item)
+    {
+        Price.SetActive(false);
+        RollButton.SetActive(false);
+        ItemSlot.SetActive(true);
+        var uiItem = UIItem.GetComponent<UIItem>();
+        uiItem.SetPowerText(item.Power);
+        uiItem.SetImage(item.Sprite);
     }
 }

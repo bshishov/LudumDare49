@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UI;
 
 public class PlayerEquip : MonoBehaviour
 {
