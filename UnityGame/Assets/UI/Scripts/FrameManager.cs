@@ -75,7 +75,7 @@ namespace UI.Scripts
             foreach (var element in oldElements)
             {
                 var oldElementTransition = frameTransition;
-                if (element.Data.OverrideTransition != null)
+                if (element.Data.OverrideTransition != null && element.Data.OverrideTransition.Any())
                     oldElementTransition = element.Data.OverrideTransition[0];
 
                 _animations.Add(oldElementTransition.TransitionOldSceneObjectOut(element.SceneObject));

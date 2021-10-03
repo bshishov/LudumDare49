@@ -35,10 +35,13 @@ public class GameManager : Singleton<GameManager>
 
     private void Update()
     {
+        /* For debug purposes */
         if (Input.GetKeyDown(KeyCode.F3))
-        {
             TransitionToLeagueDivision();
-        }
+        
+        /* For debug purposes */
+        if (Input.GetKeyDown(KeyCode.F2))
+            TransitionToGame();
     }
 
     public void TransitionToLogin()

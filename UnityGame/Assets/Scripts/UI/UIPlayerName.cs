@@ -5,11 +5,16 @@ namespace UI
 {
     public class UIPlayerName : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI InputField;
-        public string GetTextFromInput()
+        [SerializeField] private TMP_InputField InputField;
+
+        private void Start()
         {
-            return InputField.text;
+            InputField.text = PlayerStats.Instance.Username;
         }
 
+        public string GetTextFromInput()
+        {
+            return InputField.text.Trim();
+        }
     }
 }
