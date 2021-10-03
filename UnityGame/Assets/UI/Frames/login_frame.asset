@@ -13,9 +13,6 @@ MonoBehaviour:
   m_Name: login_frame
   m_EditorClassIdentifier: 
   Elements:
-  - Prefab: {fileID: 2195304723975655284, guid: 91d544ca57efb464ea5388877fcdde85, type: 3}
-    OverrideTransition:
-    - {fileID: 11400000, guid: 08111b020a0800b439a928374a2827a4, type: 2}
-  - Prefab: {fileID: 6696404490667174285, guid: eca55cc7f003ad340b95918b61b64caf, type: 3}
+  - Prefab: {fileID: 4359413144349645172, guid: ee071512c3e363346be1db991661c9ce, type: 3}
     OverrideTransition:
     - {fileID: 11400000, guid: 08111b020a0800b439a928374a2827a4, type: 2}
