@@ -26,9 +26,14 @@ namespace UI
 
         private void SendHello()
         {
-            var name = _uiPlayerName.GetTextFromInput();
-
-            Connection.Instance.Send(new ClientHello { token = PlayerStats.Instance.PlayerID, username = name });
+            PlayerStats.Instance.Username = _uiPlayerName.GetTextFromInput();
+            
+            Connection.Instance.Send(new ClientHello
+            {
+                token = PlayerStats.Instance.PlayerID, 
+                username = PlayerStats.Instance.Username
+            });
+            
             GameManager.Instance.TransitionToGame();
         }
     }
