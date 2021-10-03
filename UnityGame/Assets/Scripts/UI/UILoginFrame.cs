@@ -1,4 +1,5 @@
 using System;
+using Audio;
 using Network;
 using Network.Messages;
 using TMPro;
@@ -11,6 +12,7 @@ namespace UI
     {
         [SerializeField] private Button LoginButton;
         [SerializeField] private TMP_InputField UsernameField;
+        [SerializeField] private SoundAsset ClickSound;
 
         private void Awake()
         {
@@ -44,7 +46,8 @@ namespace UI
                     username = PlayerStats.Instance.Username
                 });
             
-                GameManager.Instance.TransitionToGame(); 
+                GameManager.Instance.TransitionToGame();
+                SoundManager.Instance.Play(ClickSound);
             }
         }
     }

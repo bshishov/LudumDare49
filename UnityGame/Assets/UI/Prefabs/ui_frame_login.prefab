@@ -320,6 +320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LoginButton: {fileID: 4378280509093640287}
   UsernameField: {fileID: 6958579636796414242}
+  ClickSound: {fileID: 11400000, guid: 223b6f12682e2714e9a7ba43e5fab4ca, type: 2}
 --- !u!1 &4359413144656471843
 GameObject:
   m_ObjectHideFlags: 0
