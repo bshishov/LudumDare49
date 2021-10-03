@@ -105,14 +105,26 @@ class Application:
             connection.send(msg.ServerError(error="already_authorized"))
             return
 
+        username = message.username.strip()
+        token = message.token.strip()
+
+        if not username:
+            connection.send(msg.ServerError(error="empty_username"))
+            return
+
+        if not token:
+            connection.send(msg.ServerError(error="empty_token"))
+            return
+
         # Authorize
-        entry = self._db.find(message.token)
+        entry = self._db.find(token)
         if entry is not None:
             player = entry.player
+            player.username = username  # Renaming
         else:
             # Assign division
             start_league_id = "wooden"
-            player_id = message.token
+            player_id = token
 
             found_division = None
             for division in self._db.iter_league_divisions(start_league_id):
@@ -134,10 +146,10 @@ class Application:
             _logger.info(f"Assigned player {player_id} to division {division.id}")
             self._db.save_division(division)
 
-            player = self._game.create_new_player(message.username.strip(), division.id)
+            player = self._game.create_new_player(username, division.id)
             entry = PlayerDbEntry(
                 key=player_id,
-                auth_token=message.token,
+                auth_token=token,
                 player=player
             )
 
