@@ -1,5 +1,5 @@
 import json
-from typing import List
+from typing import List, Optional
 from enum import Enum
 
 from attr import dataclass, attrib, validators
@@ -10,13 +10,15 @@ __all__ = [
     "Slot",
     "Rarity",
     "GameSettingsData",
-    "Merchant",
+    "MerchantData",
     "MerchantItemData",
     "MerchantQualityDistribution",
     "ItemData",
+    "LeagueData",
     "load_merchants",
     "load_items",
-    "load_game_settings"
+    "load_game_settings",
+    "load_leagues"
 ]
 
 
@@ -63,6 +65,8 @@ class GameSettingsData:
     income_period_seconds: float = attrib(validator=positive_float)
     power_income_multiplier: float = attrib(validator=positive_float)
     initial_gold: int = attrib(validator=positive_int)
+    league_update_interval_seconds: float = attrib(validator=positive_float)
+    max_players_per_division: int = attrib(validator=positive_int)
 
 
 @dataclass
@@ -81,7 +85,7 @@ class MerchantQualityDistribution:
 
 
 @dataclass
-class Merchant:
+class MerchantData:
     id: str = attrib(validator=non_empty_string)
     roll_price: int = attrib(validator=positive_int)
     items: List[MerchantItemData]
@@ -96,10 +100,20 @@ class ItemData:
     rarity: Rarity
 
 
-def load_merchants(filename: str) -> List[Merchant]:
+@dataclass
+class LeagueData:
+    id: str = attrib(validator=non_empty_string)
+    gold_rewards_for_rank: List[int]
+    n_best_players: int = attrib(validator=positive_int)
+    n_worst_players: int = attrib(validator=positive_int)
+    next_league_id: Optional[str]
+    prev_league_id: Optional[str]
+
+
+def load_merchants(filename: str) -> List[MerchantData]:
     with open(filename, "r", encoding="utf-8") as f:
         raw_data = json.load(f)
-        return spec.load(List[Merchant], raw_data)
+        return spec.load(List[MerchantData], raw_data)
 
 
 def load_items(filename: str) -> List[ItemData]:
@@ -112,3 +126,9 @@ def load_game_settings(filename: str) -> GameSettingsData:
     with open(filename, "r", encoding="utf-8") as f:
         raw_data = json.load(f)
         return spec.load(GameSettingsData, raw_data)
+
+
+def load_leagues(filename: str) -> List[LeagueData]:
+    with open(filename, "r", encoding="utf-8") as f:
+        raw_data = json.load(f)
+        return spec.load(List[LeagueData], raw_data)

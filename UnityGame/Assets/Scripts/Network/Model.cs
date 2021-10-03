@@ -42,6 +42,7 @@ namespace Network
             public string quality;
             public float obtained_at;
             public string merchant;
+            public int total_power;
         }
         
         [Serializable]

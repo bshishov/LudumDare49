@@ -1,4 +1,4 @@
-from typing import Optional, List, ClassVar
+from typing import Optional, List, ClassVar, Mapping
 from datetime import datetime
 from enum import Enum
 
@@ -6,11 +6,12 @@ import numpy as np
 from attr import dataclass
 
 from server.data import (
-    Merchant,
+    MerchantData,
     MerchantItemData,
     ItemData,
     GameSettingsData,
-    Slot
+    Slot,
+    LeagueData
 )
 
 __all__ = [
@@ -53,8 +54,13 @@ class Quality(Enum):
     DIVINE = "divine"
 
 
-QUALITY_MULTIPLIER = {"shitty": 0.7, "bad": 0.85, "normal": 1, "good": 1.2, "divine": 1.4}
-QUALITY_DISTRIBUTION = {"shitty": 0.35, "bad": 0.25, "normal": 0.25, "good": 0.1, "divine": 0.05}
+QUALITY_MULTIPLIER = {
+    Quality.SHITTY: 0.7,
+    Quality.BAD: 0.85,
+    Quality.NORMAL: 1,
+    Quality.GOOD: 1.2,
+    Quality.DIVINE: 1.4
+}
 
 
 @dataclass
@@ -63,10 +69,7 @@ class RolledItem:
     quality: Quality
     obtained_at: datetime
     merchant: str
-
-    @property
-    def power(self):
-        return self.item.power * QUALITY_MULTIPLIER[self.quality.value]
+    total_power: int
 
 
 @dataclass
@@ -76,13 +79,14 @@ class Player:
     last_gold_update_time: datetime
     items: List[RolledItem]
     current_undecided_roll_item: Optional[RolledItem]
+    # last_activity: datetime
 
     @property
     def total_power(self) -> int:
         power = 0
         for item in self.items:
-            power += item.power
-        return power + 10
+            power += item.total_power
+        return power
 
     def get_item_in_slot(self, slot: Slot) -> Optional[RolledItem]:
         for rolled_item in self.items:
@@ -91,16 +95,25 @@ class Player:
         return None
 
 
+@dataclass
+class Division:
+    id: str
+    league: LeagueData
+    players: List[Player]
+
+
 class Game:
     def __init__(
             self,
             settings: GameSettingsData,
-            merchants: List[Merchant],
-            items: List[ItemData]
+            merchants: List[MerchantData],
+            items: List[ItemData],
+            leagues: List[LeagueData]
     ):
+        self._leagues = leagues
         self._settings = settings
-        self._items = {item.id: item for item in items}
-        self._merchants = {m.id: m for m in merchants}
+        self._items: Mapping[str, ItemData] = {item.id: item for item in items}
+        self._merchants: Mapping[str, MerchantData] = {m.id: m for m in merchants}
 
         for merchant in merchants:
             for item in merchant.items:
@@ -123,22 +136,34 @@ class Game:
         player.last_gold_updated_time = datetime.now()
         player.gold += round(player.total_power * self._settings.power_income_multiplier)
 
-    def roll_item(self, merchant: Merchant) -> RolledItem:
+    def roll_item(self, merchant: MerchantData) -> RolledItem:
         item_probabilities = np.array(list(i.probability for i in merchant.items), np.float32)
         item_probabilities /= np.sum(item_probabilities)
 
-        item: MerchantItemData = np.random.choice(merchant.items, 1, p=item_probabilities)[0]
+        merchant_item: MerchantItemData = np.random.choice(merchant.items, 1, p=item_probabilities)[0]
 
-        quality_name = np.random.choice(
-            list(QUALITY_DISTRIBUTION.keys()), 1,
-            p=list(QUALITY_DISTRIBUTION.values())
+        quality_distribution = {
+            Quality.SHITTY: merchant.quality_distribution.shitty,
+            Quality.NORMAL: merchant.quality_distribution.normal,
+            Quality.BAD: merchant.quality_distribution.bad,
+            Quality.GOOD: merchant.quality_distribution.good,
+            Quality.DIVINE: merchant.quality_distribution.divine,
+        }
+
+        quality: Quality = np.random.choice(
+            list(quality_distribution.keys()), 1,
+            p=list(quality_distribution.values())
         )[0]
 
+        base_item = self._items[merchant_item.item]
+        total_item_power = round(base_item.power * QUALITY_MULTIPLIER[quality])
+
         return RolledItem(
-            item=self._items[item.item],
-            quality=Quality(quality_name),
+            item=base_item,
+            quality=quality,
             obtained_at=datetime.now(),
-            merchant=merchant.id
+            merchant=merchant.id,
+            total_power=total_item_power
         )
 
     def roll_item_for_player(self, player: Player, merchant_id: str):
@@ -154,6 +179,7 @@ class Game:
 
         rolled_item = self.roll_item(merchant)
         player.current_undecided_roll_item = rolled_item
+        player.gold -= merchant.roll_price
 
     def accept_roll(self, player: Player):
         rolled_item = player.current_undecided_roll_item
@@ -175,3 +201,4 @@ class Game:
             raise NoActiveRoll
 
         player.current_undecided_roll_item = None
+        player.gold += round(self._merchants[rolled_item.merchant].roll_price * 0.7)
