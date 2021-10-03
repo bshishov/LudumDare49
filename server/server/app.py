@@ -1,4 +1,4 @@
-from typing import Set, Optional
+from typing import Set, Optional, List
 import asyncio
 import logging
 from contextlib import asynccontextmanager
@@ -186,7 +186,7 @@ class Application:
             connection.send(msg.ServerError(error=NotAuthorizedError().error_code))
             return
 
-        players_in_division = []
+        players_in_division: List[Player] = []
         division = self._db.get_division(player.division_id)
         if division:
             for player_id in division.player_ids:
@@ -194,7 +194,7 @@ class Application:
                 if p is not None:  # Might be none if invalid key
                     players_in_division.append(p.player)
 
-        players_in_division = sorted(players_in_division, key=lambda i: i.power, reverse=True)
+        players_in_division = sorted(players_in_division, key=lambda i: i.total_power, reverse=True)
         division_standing_players = []
         for rank, p in enumerate(players_in_division):
             division_standing_players.append(DivisionPlayer(
