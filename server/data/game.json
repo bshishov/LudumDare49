@@ -1,5 +1,7 @@
 {
   "income_period_seconds": 60.0,
   "power_income_multiplier": 2.0,
-  "initial_gold": 1000
+  "initial_gold": 1000,
+  "league_update_interval_seconds": 86400,
+  "max_players_per_division": 10
 }

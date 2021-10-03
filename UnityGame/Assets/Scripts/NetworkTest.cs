@@ -144,7 +144,7 @@ public class NetworkTest : MonoBehaviour
 
     private int ItemPower(RolledItem item)
     {
-        return item.item.power;
+        return item.total_power;
     }
 
     private void UpdatePlayer(Player player)

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "wooden",
+    "gold_rewards_for_rank": [
+      1000,
+      500,
+      200,
+      100
+    ],
+    "n_best_players": 3,
+    "n_worst_players": 0,
+    "next_league_id": "bronze",
+    "prev_league_id": null
+  },
+  {
+    "id": "bronze",
+    "gold_rewards_for_rank": [
+      2000,
+      1000,
+      500,
+      200,
+      100
+    ],
+    "n_best_players": 0,
+    "n_worst_players": 3,
+    "next_league_id": null,
+    "prev_league_id": "wooden"
+  }
+]

@@ -16,7 +16,12 @@ from server.messages import (
 )
 from server.db import PickleDb
 from server.game import Game
-from server.data import load_merchants, load_items, load_game_settings
+from server.data import (
+    load_merchants,
+    load_items,
+    load_game_settings,
+    load_leagues
+)
 
 _logger = logging.getLogger(__name__)
 
@@ -106,11 +111,13 @@ def main(host: str, port: int, db_path: str, data_path: str):
     items = load_items(os.path.join(data_path, "items.json"))
     merchants = load_merchants(os.path.join(data_path, "merchants.json"))
     game_settings = load_game_settings(os.path.join(data_path, "game.json"))
+    leagues = load_leagues(os.path.join(data_path, "leagues.json"))
 
     game = Game(
         settings=game_settings,
         merchants=merchants,
-        items=items
+        items=items,
+        leagues=leagues
     )
 
     _logger.info(f"Loading db from {db_path}")
