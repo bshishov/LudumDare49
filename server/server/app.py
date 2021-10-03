@@ -137,7 +137,7 @@ class Application:
     async def on_player_decline(self, connection: PlayerConnection, message: msg.ClientDeclineRoll):
         try:
             async with self.player_change(connection) as player:
-                self._game.accept_roll(player)
+                self._game.decline_roll(player)
                 connection.send(msg.ServerRollDecided(player, accepted=False))
         except (NotAuthorizedError, GameError) as err:
             _logger.warning(err)

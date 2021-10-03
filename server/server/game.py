@@ -1,4 +1,4 @@
-from typing import Optional, List, ClassVar
+from typing import Optional, List, ClassVar, Mapping
 from datetime import datetime
 from enum import Enum
 
@@ -99,8 +99,8 @@ class Game:
             items: List[ItemData]
     ):
         self._settings = settings
-        self._items = {item.id: item for item in items}
-        self._merchants = {m.id: m for m in merchants}
+        self._items: Mapping[str, ItemData] = {item.id: item for item in items}
+        self._merchants: Mapping[str, Merchant] = {m.id: m for m in merchants}
 
         for merchant in merchants:
             for item in merchant.items:
@@ -154,6 +154,7 @@ class Game:
 
         rolled_item = self.roll_item(merchant)
         player.current_undecided_roll_item = rolled_item
+        player.gold -= merchant.roll_price
 
     def accept_roll(self, player: Player):
         rolled_item = player.current_undecided_roll_item
