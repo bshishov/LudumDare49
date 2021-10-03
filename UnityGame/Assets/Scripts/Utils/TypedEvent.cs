@@ -43,7 +43,10 @@ namespace Utils
             var t = typeof(T);
             var handler = new Handler<T, TBase>(action);
             if (_handlers.ContainsKey(t))
-                _handlers[t].Add(handler);
+            {
+                if (!_handlers[t].Contains(handler))
+                    _handlers[t].Add(handler);
+            }
             else
                 _handlers.Add(t, new List<IHandler<TBase>> {handler});
         }
