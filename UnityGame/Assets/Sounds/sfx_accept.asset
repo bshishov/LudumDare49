@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: 817f59cf70fc8d642b13c5330e7b16d0, type: 3}
   Loop: 0
-  MixerGroup: {fileID: 24300002, guid: f042ef4b1d77f3746852b0b0aaeb10f7, type: 2}
-  VolumeModifier: 0.5
+  MixerGroup: {fileID: -9035450551968300087, guid: f042ef4b1d77f3746852b0b0aaeb10f7, type: 2}
+  VolumeModifier: 1
   Delay: 0
   RandomizeDelay: 0
   MaxAdditionalDelay: 0
