@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: login_frame
   m_EditorClassIdentifier: 
   Elements:
-  - Prefab: {fileID: 0}
+  - Prefab: {fileID: 2195304723975655284, guid: 91d544ca57efb464ea5388877fcdde85, type: 3}
     OverrideTransition: []
