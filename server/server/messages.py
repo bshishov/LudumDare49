@@ -6,7 +6,11 @@ from attr import dataclass, attrib
 from attr.validators import instance_of
 
 from server.spec import spec
-from server.game import Player, RolledItem
+from server.game import (
+    Player,
+    RolledItem,
+    DivisionStandings,
+)
 
 
 __all__ = [
@@ -15,6 +19,7 @@ __all__ = [
     "ClientRoll",
     "ClientAcceptRoll",
     "ClientDeclineRoll",
+    "ClientDivisionInfoRequest",
 
     # Server Messages
     "ServerHello",
@@ -78,6 +83,12 @@ class ClientAcceptRoll(PlayerMessage):
     pass
 
 
+@register_message("division_info_request")
+@dataclass(slots=True)
+class ClientDivisionInfoRequest(PlayerMessage):
+    pass
+
+
 @register_message("decline_roll")
 @dataclass(slots=True)
 class ClientDeclineRoll(PlayerMessage):
@@ -116,6 +127,12 @@ class ServerRollSuccess(ServerMessage):
 class ServerRollDecided(ServerMessage):
     player: Player
     accepted: bool
+
+
+@register_message("division_info")
+@dataclass(slots=True)
+class ServerDivisionInfo(ServerMessage):
+    standings: DivisionStandings
 
 
 _REVERSED_PLAYER_MESSAGE_TYPES = {v: k for k, v in _PLAYER_MESSAGE_TYPES.items()}

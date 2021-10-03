@@ -1,4 +1,5 @@
 using System;
+using Network.Game;
 
 namespace Network
 {
@@ -14,6 +15,7 @@ namespace Network
         public const string ClientRoll = "roll";
         public const string ClientAcceptRoll = "accept_roll";
         public const string ClientDeclineRoll = "decline_roll";
+        public const string ClientDivisionInfoRequest = "division_info_request";
         
         // Server to client
         public const string ServerHello = "server_hello";
@@ -22,6 +24,7 @@ namespace Network
         
         public const string ServerRollSuccess = "roll_success";
         public const string ServerRollDecided = "roll_decided";
+        public const string ServerDivisionInfo = "division_info";
     }
 
     namespace Game
@@ -62,6 +65,15 @@ namespace Network
             public int rank;
             public int power;
         }
+
+        [Serializable]
+        public struct DivisionStandings
+        {
+            public string division_id;
+            public string league_id;
+            public DivisionPlayer[] players;
+            public double next_update_at;
+        }
     }
 
     namespace Messages
@@ -100,6 +112,12 @@ namespace Network
         }
         
         [Serializable]
+        public class ClientDivisionInfoRequest : IClientMessage
+        {
+            public string type = MessageTypes.ClientDivisionInfoRequest;
+        }
+        
+        [Serializable]
         public struct ServerHello : IMessage
         {
             public Game.Player player;
@@ -131,6 +149,12 @@ namespace Network
         {
             public Game.Player player;
             public bool accepted;
+        }
+        
+        [Serializable]
+        public struct ServerDivisionInfo : IMessage
+        {
+            public DivisionStandings standings;
         }
     }
 }

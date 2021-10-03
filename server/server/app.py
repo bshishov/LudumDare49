@@ -65,6 +65,7 @@ class Application:
             msg.ClientRoll: self.on_player_roll,
             msg.ClientAcceptRoll: self.on_player_accept,
             msg.ClientDeclineRoll: self.on_player_decline,
+            msg.ClientDivisionInfoRequest: self.on_client_division_info_request,
         }
 
     @asynccontextmanager
@@ -143,12 +144,21 @@ class Application:
             _logger.warning(err)
             connection.send(msg.ServerError(error=err.error_code))
 
+    async def on_client_division_info_request(
+            self,
+            connection: PlayerConnection,
+            message: msg.ClientDivisionInfoRequest
+    ):
+        standings = self._game.generate_division_standings()
+        connection.send(msg.ServerDivisionInfo(standings=standings))
+
     async def gold_update_routine(self):
         interval = self._game.income_update_interval
 
         while True:
             await asyncio.sleep(interval)
-            next_update_time = datetime.datetime.now() + datetime.timedelta(seconds=interval)
+            _logger.info("Gold update")
+            next_update_time = datetime.datetime.utcnow() + datetime.timedelta(seconds=interval)
             for connection in self._active_connections:
                 player = connection.player
                 if not player:
@@ -169,3 +179,26 @@ class Application:
                 except (NotAuthorizedError, GameError) as err:
                     _logger.warning(err)
                     connection.send(msg.ServerError(error=err.error_code))
+                except Exception as err:
+                    _logger.error(err)
+
+    async def league_update_routine(self):
+        interval_seconds = 10
+
+        while True:
+            await asyncio.sleep(interval_seconds)
+            _logger.info("League update")
+
+            for connection in self._active_connections:
+                player = connection.player
+                if not player:
+                    continue
+
+                try:
+                    standings = self._game.generate_division_standings()
+                    connection.send(msg.ServerDivisionInfo(standings=standings))
+                except (NotAuthorizedError, GameError) as err:
+                    _logger.warning(err)
+                    connection.send(msg.ServerError(error=err.error_code))
+                except Exception as err:
+                    _logger.error(err)

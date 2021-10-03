@@ -19,6 +19,7 @@ namespace Network
             {MessageTypes.ClientRoll, typeof(ClientRoll)},
             {MessageTypes.ClientAcceptRoll, typeof(ClientAcceptRoll)},
             {MessageTypes.ClientDeclineRoll, typeof(ClientDeclineRoll)},
+            {MessageTypes.ClientDivisionInfoRequest, typeof(ClientDivisionInfoRequest)},
             
             // Server
             {MessageTypes.ServerHello, typeof(ServerHello)},
@@ -26,6 +27,7 @@ namespace Network
             {MessageTypes.ServerGoldUpdated, typeof(ServerGoldUpdated)},
             {MessageTypes.ServerRollSuccess, typeof(ServerRollSuccess)},
             {MessageTypes.ServerRollDecided, typeof(ServerRollDecided)},
+            {MessageTypes.ServerDivisionInfo, typeof(ServerDivisionInfo)},
         };
 
         private static readonly Dictionary<Type, string> ClassToType =

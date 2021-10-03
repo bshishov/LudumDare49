@@ -1,6 +1,7 @@
 from typing import Optional, List, ClassVar, Mapping
-from datetime import datetime
+from datetime import datetime, timedelta
 from enum import Enum
+import random
 
 import numpy as np
 from attr import dataclass
@@ -19,6 +20,8 @@ __all__ = [
     "Player",
     "RolledItem",
     "Game",
+    "DivisionStandings",
+    "DivisionPlayer"
 ]
 
 
@@ -95,11 +98,19 @@ class Player:
         return None
 
 
-@dataclass
-class Division:
-    id: str
-    league: LeagueData
-    players: List[Player]
+@dataclass(slots=True)
+class DivisionPlayer:
+    username: str
+    rank: int
+    power: int
+
+
+@dataclass(slots=True)
+class DivisionStandings:
+    division_id: str
+    league_id: str
+    players: List[DivisionPlayer]
+    next_update_at: datetime
 
 
 class Game:
@@ -202,3 +213,24 @@ class Game:
 
         player.current_undecided_roll_item = None
         player.gold += round(self._merchants[rolled_item.merchant].roll_price * 0.7)
+
+    def generate_division_standings(self) -> DivisionStandings:
+        league = random.choice(self._leagues)
+
+        n = self._settings.max_players_per_division
+        powers = list(sorted([random.randint(100, 2000) for _ in range(n)], reverse=True))
+        division_players = []
+
+        for rank, p in enumerate(powers):
+            division_players.append(DivisionPlayer(
+                username=f"random_player",
+                power=p,
+                rank=rank + 1
+            ))
+
+        return DivisionStandings(
+            league_id=league.id,
+            division_id=league.id + "_test",
+            players=division_players,
+            next_update_at=datetime.now() + timedelta(hours=1, minutes=45)
+        )

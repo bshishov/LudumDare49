@@ -134,7 +134,8 @@ def main(host: str, port: int, db_path: str, data_path: str):
 
     _logger.info(f'Running server on {host}:{port}')
     asyncio.get_event_loop().run_until_complete(websocket_server)
-    asyncio.get_event_loop().run_until_complete(application.gold_update_routine())
+    asyncio.get_event_loop().create_task(application.gold_update_routine())
+    asyncio.get_event_loop().create_task(application.league_update_routine())
     _logger.info(f'Server started')
     asyncio.get_event_loop().run_forever()
 
