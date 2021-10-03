@@ -205,7 +205,8 @@ class Application:
         connection.send(msg.ServerDivisionInfo(standings=DivisionInfo(
             division_id=player.division_id,
             players=division_standing_players,
-            next_update_at=datetime.datetime.now() + datetime.timedelta(hours=1000)
+            next_update_at=datetime.datetime.now() + datetime.timedelta(hours=1000),
+            league_id=self._db.get_division(player.division_id).league_id
         )))
 
     async def gold_update_routine(self):
