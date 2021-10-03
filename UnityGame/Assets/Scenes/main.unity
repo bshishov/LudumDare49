@@ -309,9 +309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 747d61193737cbb42b77cb64fac9433f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIItem: {fileID: 1135874791}
-  ItemSlot: {fileID: 1495983680}
-  Price: {fileID: 1891617147}
   RollButton: {fileID: 452513052}
 --- !u!222 &132787991
 CanvasRenderer:
@@ -1163,11 +1160,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1135874791 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2940007067987947688, guid: 0482b3b34cb82bc4ca517977c99ed3c3, type: 3}
-  m_PrefabInstance: {fileID: 297361815}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1457852769
 GameObject:
   m_ObjectHideFlags: 0
