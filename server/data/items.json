@@ -42,8 +42,14 @@
     "rarity": "epic"
   },
   {
-    "id": "horned_helmetastronaut_helmet_legendary",
+    "id": "horned_helmet_legendary",
     "power": 21,
+    "slot": "head",
+    "rarity": "legendary"
+  },
+  {
+    "id": "astronaut_helmet_legendary",
+    "power": 23,
     "slot": "head",
     "rarity": "legendary"
   },
