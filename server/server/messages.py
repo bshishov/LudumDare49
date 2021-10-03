@@ -9,7 +9,7 @@ from server.spec import spec
 from server.game import (
     Player,
     RolledItem,
-    DivisionStandings,
+    DivisionInfo,
 )
 
 
@@ -132,7 +132,7 @@ class ServerRollDecided(ServerMessage):
 @register_message("division_info")
 @dataclass(slots=True)
 class ServerDivisionInfo(ServerMessage):
-    standings: DivisionStandings
+    standings: DivisionInfo
 
 
 _REVERSED_PLAYER_MESSAGE_TYPES = {v: k for k, v in _PLAYER_MESSAGE_TYPES.items()}

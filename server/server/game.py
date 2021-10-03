@@ -20,7 +20,7 @@ __all__ = [
     "Player",
     "RolledItem",
     "Game",
-    "DivisionStandings",
+    "DivisionInfo",
     "DivisionPlayer"
 ]
 
@@ -82,6 +82,7 @@ class Player:
     last_gold_update_time: datetime
     items: List[RolledItem]
     current_undecided_roll_item: Optional[RolledItem]
+    division_id: str
     # last_activity: datetime
 
     @property
@@ -106,7 +107,7 @@ class DivisionPlayer:
 
 
 @dataclass(slots=True)
-class DivisionStandings:
+class DivisionInfo:
     division_id: str
     league_id: str
     players: List[DivisionPlayer]
@@ -134,13 +135,14 @@ class Game:
     def income_update_interval(self):
         return self._settings.income_period_seconds
 
-    def create_new_player(self, username: str) -> Player:
+    def create_new_player(self, username: str, division_id: str) -> Player:
         return Player(
             username=username,
             gold=self._settings.initial_gold,
             items=[],
             last_gold_update_time=datetime.now(),
-            current_undecided_roll_item=None
+            current_undecided_roll_item=None,
+            division_id=division_id
         )
 
     def update_player_gold(self, player: Player):
@@ -214,7 +216,7 @@ class Game:
         player.current_undecided_roll_item = None
         player.gold += round(self._merchants[rolled_item.merchant].roll_price * 0.7)
 
-    def generate_division_standings(self) -> DivisionStandings:
+    def generate_division_standings(self) -> DivisionInfo:
         league = random.choice(self._leagues)
 
         n = self._settings.max_players_per_division
@@ -228,7 +230,7 @@ class Game:
                 rank=rank + 1
             ))
 
-        return DivisionStandings(
+        return DivisionInfo(
             league_id=league.id,
             division_id=league.id + "_test",
             players=division_players,

@@ -76,7 +76,7 @@ class WebsocketHandler:
             await websocket.send(message)
 
 
-def main(host: str, port: int, db_path: str, data_path: str):
+def main(host: str, port: int, data_path: str):
     logging_config = {
         'version': 1,
         'disable_existing_loggers': False,
@@ -120,9 +120,9 @@ def main(host: str, port: int, db_path: str, data_path: str):
         leagues=leagues
     )
 
-    _logger.info(f"Loading db from {db_path}")
+    _logger.info(f"Loading db")
     application = Application(
-        db=PickleDb("players.db"),
+        db=PickleDb("players.db", "divisions.db"),
         game=game
     )
     handler = WebsocketHandler(
@@ -145,6 +145,5 @@ if __name__ == "__main__":
     parser.add_argument('--port', type=int, default=6789, help='Port')
     parser.add_argument('--host', type=str, default='localhost', help='WebSockets host')
     parser.add_argument('--data', type=str, default='data/', help='path to game data')
-    parser.add_argument('--db', type=str, default='players.db', help='path to db')
     arguments = parser.parse_args()
-    main(arguments.host, arguments.port, arguments.db, arguments.data)
+    main(arguments.host, arguments.port, arguments.data)
