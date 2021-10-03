@@ -12,20 +12,38 @@
     "rarity": "uncommon"
   },
   {
-    "id": "shrek_hat_rare",
+    "id": "cocked_hat_uncommon",
     "power": 9,
+    "slot": "head",
+    "rarity": "uncommon"
+  },
+  {
+    "id": "shrek_hat_rare",
+    "power": 10,
+    "slot": "head",
+    "rarity": "rare"
+  },
+  {
+    "id": "sombrero_rare",
+    "power": 12,
     "slot": "head",
     "rarity": "rare"
   },
   {
     "id": "horned_helmet_epic",
-    "power": 10,
+    "power": 15,
     "slot": "head",
     "rarity": "epic"
   },
   {
-    "id": "astornaut_helmet_legendary",
-    "power": 12,
+    "id": "shrek_hat_epic",
+    "power": 18,
+    "slot": "head",
+    "rarity": "epic"
+  },
+  {
+    "id": "horned_helmetastronaut_helmet_legendary",
+    "power": 21,
     "slot": "head",
     "rarity": "legendary"
   },
@@ -42,20 +60,44 @@
     "rarity": "uncommon"
   },
   {
-    "id": "crab_rare",
+    "id": "maid_uncommon",
     "power": 11,
+    "slot": "body",
+    "rarity": "uncommon"
+  },
+  {
+    "id": "crab_rare",
+    "power": 12,
+    "slot": "body",
+    "rarity": "rare"
+  },
+  {
+    "id": "tshirt_rare",
+    "power": 14,
     "slot": "body",
     "rarity": "rare"
   },
   {
     "id": "sumo_epic",
-    "power": 12,
+    "power": 17,
     "slot": "body",
     "rarity": "epic"
   },
   {
+    "id": "crab_epic",
+    "power": 20,
+    "slot": "body",
+    "rarity": "epic"
+  },
+  {
+    "id": "sumo_legendary",
+    "power": 23,
+    "slot": "body",
+    "rarity": "legendary"
+  },
+  {
     "id": "dino_legendary",
-    "power": 14,
+    "power": 25,
     "slot": "body",
     "rarity": "legendary"
   },
@@ -72,20 +114,44 @@
     "rarity": "uncommon"
   },
   {
-    "id": "ankle_rare",
+    "id": "brick_uncommon",
     "power": 9,
+    "slot": "boots",
+    "rarity": "uncommon"
+  },
+  {
+    "id": "ankle_rare",
+    "power": 10,
+    "slot": "boots",
+    "rarity": "rare"
+  },
+  {
+    "id": "shoe_rare",
+    "power": 12,
     "slot": "boots",
     "rarity": "rare"
   },
   {
     "id": "rollers_epic",
-    "power": 10,
+    "power": 15,
     "slot": "boots",
     "rarity": "epic"
   },
   {
+    "id": "ankle_epic",
+    "power": 18,
+    "slot": "boots",
+    "rarity": "epic"
+  },
+  {
+    "id": "rollers_legendary",
+    "power": 21,
+    "slot": "boots",
+    "rarity": "legendary"
+  },
+  {
     "id": "armor_legendary",
-    "power": 12,
+    "power": 23,
     "slot": "boots",
     "rarity": "legendary"
   },
@@ -102,20 +168,44 @@
     "rarity": "uncommon"
   },
   {
-    "id": "crystal_rare",
+    "id": "donut_uncommon",
     "power": 7,
+    "slot": "trinket",
+    "rarity": "uncommon"
+  },
+  {
+    "id": "crystal_rare",
+    "power": 8,
+    "slot": "trinket",
+    "rarity": "rare"
+  },
+  {
+    "id": "logo_ld_rare",
+    "power": 10,
     "slot": "trinket",
     "rarity": "rare"
   },
   {
     "id": "new_item_19_epic",
-    "power": 8,
+    "power": 13,
     "slot": "trinket",
     "rarity": "epic"
   },
   {
+    "id": "crystal_epic",
+    "power": 16,
+    "slot": "trinket",
+    "rarity": "epic"
+  },
+  {
+    "id": "new_item_19_legendary",
+    "power": 19,
+    "slot": "trinket",
+    "rarity": "legendary"
+  },
+  {
     "id": "illuminati_legendary",
-    "power": 10,
+    "power": 21,
     "slot": "trinket",
     "rarity": "legendary"
   },
@@ -132,20 +222,44 @@
     "rarity": "uncommon"
   },
   {
-    "id": "dagger_rare",
+    "id": "fan_uncommon",
     "power": 13,
+    "slot": "weapon",
+    "rarity": "uncommon"
+  },
+  {
+    "id": "dagger_rare",
+    "power": 14,
+    "slot": "weapon",
+    "rarity": "rare"
+  },
+  {
+    "id": "fork_rare",
+    "power": 16,
     "slot": "weapon",
     "rarity": "rare"
   },
   {
     "id": "bow_epic",
-    "power": 14,
+    "power": 19,
     "slot": "weapon",
     "rarity": "epic"
   },
   {
+    "id": "dagger_epic",
+    "power": 22,
+    "slot": "weapon",
+    "rarity": "epic"
+  },
+  {
+    "id": "bow_legendary",
+    "power": 25,
+    "slot": "weapon",
+    "rarity": "legendary"
+  },
+  {
     "id": "mace_legendary",
-    "power": 16,
+    "power": 27,
     "slot": "weapon",
     "rarity": "legendary"
   }

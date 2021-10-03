@@ -35,3 +35,5 @@ modules/
 
 # Stats
 *.jsonl
+
+venv/
