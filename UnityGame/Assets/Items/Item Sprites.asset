@@ -24,7 +24,7 @@ MonoBehaviour:
   - Image: {fileID: 1111326850985772410, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - horned_helmet_epic
-    - horned_helmetastronaut_helmet_legendary
+    - horned_helmet_legendary
   - Image: {fileID: 6516477626123828977, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - shrek_hat_rare
@@ -105,5 +105,6 @@ MonoBehaviour:
   - Image: {fileID: -5841689769624622280, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - mace_legendary
-  - Image: {fileID: 0}
-    ID: []
+  - Image: {fileID: 8837413427220791341, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - astronaut_helmet_legendary
