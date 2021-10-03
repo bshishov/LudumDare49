@@ -6,6 +6,7 @@ using Network.Game;
 using Network.Messages;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI
 {
@@ -14,6 +15,7 @@ namespace UI
         public UIDivisionPlayerList PlayerList;
         public TextMeshProUGUI LeagueName;
         public TextMeshProUGUI NextUpdateAt;
+        public Button RefreshButton;
 
         private DateTime _targetUpdateTime = DateTime.Now;
 
@@ -22,6 +24,8 @@ namespace UI
             // Subscribe to division updates
             Connection.Instance.MessageReceived.AddListener<ServerDivisionInfo>(
                 m => UpdateStandings(m.standings));
+            
+            RefreshButton.onClick.AddListener(RequestDivisionInfo);
 
             RequestDivisionInfo();
             PlayerList.Clear();
