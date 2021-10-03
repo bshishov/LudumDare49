@@ -1,3 +1,5 @@
+using Network;
+using Network.Messages;
 using UI.Scripts;
 using UIF.Scripts.Transitions;
 using UnityEngine;
@@ -17,11 +19,16 @@ public class GameManager : Singleton<GameManager>
         
     private FrameManager _frameManager;
 
+
+    [Header("Player Data")]
+    public PlayerStats PlayerStats;
+
     private void Start()
     {
         _frameManager = GetComponent<FrameManager>();
-        
+
         // Todo: subscribe to connection
+        Connection.Instance.Connect("ws://unsmith.shishov.me/");
     }
 
     public void TransitionToLogin()
