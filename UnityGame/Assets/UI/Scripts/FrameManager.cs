@@ -99,7 +99,7 @@ namespace UI.Scripts
                     _activeElements.Add(instance);
 
                     var elementTransition = frameTransition;
-                    if (element.OverrideTransition != null)
+                    if (element.OverrideTransition != null && element.OverrideTransition.Any())
                         elementTransition = element.OverrideTransition[indexOfTransition];
 
                     _animations.Add(elementTransition.TransitionNewSceneObjectIn(sceneObject));
