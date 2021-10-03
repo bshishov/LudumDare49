@@ -7,9 +7,15 @@ namespace UI
     {
         [SerializeField] private TextMeshProUGUI PowerText;
 
-        public void SetTotalPower(int power)
+        private void Awake()
         {
-            PowerText.text = power.ToString();
+            PlayerStats.Instance.PlayerStatsChanged += SetTotalPower;
+            SetTotalPower();
+        }
+
+        public void SetTotalPower()
+        {
+            PowerText.text = PlayerStats.Instance.Power.ToString();
         }
     }
 }

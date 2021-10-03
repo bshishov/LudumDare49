@@ -19,3 +19,12 @@ MonoBehaviour:
   - Prefab: {fileID: 7423216465048833725, guid: 29e843db8fa15964086446d81312d987, type: 3}
     OverrideTransition:
     - {fileID: 11400000, guid: 08111b020a0800b439a928374a2827a4, type: 2}
+  - Prefab: {fileID: 560764886703510468, guid: d259d05e669470242bb42f9734946f43, type: 3}
+    OverrideTransition:
+    - {fileID: 11400000, guid: 08111b020a0800b439a928374a2827a4, type: 2}
+  - Prefab: {fileID: 4320723729804430241, guid: 2d39e90cc8056644c97f6a16338c5ae2, type: 3}
+    OverrideTransition:
+    - {fileID: 11400000, guid: 08111b020a0800b439a928374a2827a4, type: 2}
+  - Prefab: {fileID: 2786045255272741747, guid: 40245e087dbfe9444929dde1a4bd5407, type: 3}
+    OverrideTransition:
+    - {fileID: 11400000, guid: 08111b020a0800b439a928374a2827a4, type: 2}

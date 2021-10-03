@@ -7,9 +7,15 @@ namespace UI
     {
         [SerializeField] private TextMeshProUGUI Gold;
 
-        public void SetGold(int gold)
+        private void Awake()
         {
-            Gold.text = gold.ToString();
+            PlayerStats.Instance.PlayerStatsChanged += SetGold;
+            SetGold();
+        }
+
+        public void SetGold()
+        {
+            Gold.text = PlayerStats.Instance.Gold.ToString();
         }
     }
 }
