@@ -36,7 +36,6 @@ public class PlayerStats : Singleton<PlayerStats>
         Connection.Instance.MessageReceived.AddListener<ServerRollSuccess>(OnServerRollSuccess);
         Connection.Instance.MessageReceived.AddListener<ServerRollDecided>(OnServerRollDecided);
         Connection.Instance.MessageReceived.AddListener<ServerGoldUpdated>(OnServerGoldUpdated);
-        //Connection.Instance.MessageReceived.AddListener<ServerGoldUpdated>(OnServerGoldUpdated);
     }
 
     private void OnServerGoldUpdated(ServerGoldUpdated massage)
@@ -77,14 +76,11 @@ public class PlayerStats : Singleton<PlayerStats>
         Save();
         UpdatePlayer(hello.player);
 
-        //player exit when roll item 
+        //player exit when rolled  
         if (hello.player.current_undecided_roll_item != null)
         {
             Connection.Instance.Send(new ClientDeclineRoll());
         }
-        /*
-        LastMessage.text = $"Server sent hello {hello.player}";
-        UpdateItemsText(hello.player);*/
     }
     private void OnServerRollDecided(ServerRollDecided message)
     {
@@ -100,19 +96,7 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         Gold = player.gold;
         Power = CalculatePower(player);
-        /*
-        UpdateItemsText(player);
-
-        if (player.current_undecided_roll_item.HasValue)
-        {
-            var i = player.current_undecided_roll_item.Value;
-            RolledItem.text = $"<color=grey>{i.quality}</color> {i.item.id} <color=yellow>{ItemPower(i)}</color>";
-        }
-        else
-        {
-            RolledItem.text = "";
-        }*/
-
+      
         playerItems = player.items;
         PlayerStatsChanged?.Invoke();
     }
