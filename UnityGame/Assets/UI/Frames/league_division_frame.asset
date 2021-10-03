@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301e94d912bc1554184b5b3bbfe1f9ff, type: 3}
   m_Name: league_division_frame
   m_EditorClassIdentifier: 
-  Elements: []
+  Elements:
+  - Prefab: {fileID: 4617554056617496601, guid: fbd3777c2abfd9b43839489d88ce1623, type: 3}
+    OverrideTransition: []
