@@ -42,8 +42,22 @@ public class NetworkTest : MonoBehaviour
         Connection.Instance.Connected += OnConnected;
         Connection.Instance.Disconnected += OnDisconnected;
         
+        Connection.Instance.Send(new ClientRoll());
+        
+        
+        Connection.Instance.MessageReceived.AddListener<ServerRollSuccess>(OnServerRollSuccess);
         Connection.Instance.MessageReceived.AddListener<ServerHello>(OnServerHello);
         Connection.Instance.MessageReceived.AddListener<ServerGoldUpdated>(OnServerGoldUpdated);
+        Connection.Instance.MessageReceived.AddListener<ServerError>(OnServerError);
+    }
+
+    private void OnServerError(ServerError message)
+    {
+        Debug.LogWarning(message.error);
+    }
+
+    private void OnServerRollSuccess(ServerRollSuccess message)
+    {
     }
 
     private void OnServerGoldUpdated(ServerGoldUpdated message)
