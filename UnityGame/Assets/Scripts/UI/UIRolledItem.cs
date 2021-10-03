@@ -28,7 +28,6 @@ namespace UI
             {
                 NewItemPower[i].text = massage.rolled_item.total_power.ToString();
             }
-            Debug.Log(massage.rolled_item.total_power);
             NewItemRoot.SetActive(true);
         }
 
