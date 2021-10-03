@@ -201,4 +201,4 @@ class Game:
             raise NoActiveRoll
 
         player.current_undecided_roll_item = None
-        # player.gold += round(self._merchants[rolled_item.merchant].roll_price * 0.5)
+        player.gold += round(self._merchants[rolled_item.merchant].roll_price * 0.7)
