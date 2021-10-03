@@ -146,7 +146,6 @@ GameObject:
   - component: {fileID: 2195304723975655275}
   - component: {fileID: 2195304723975655274}
   - component: {fileID: 2195304723975655272}
-  - component: {fileID: 3033967942667702540}
   m_Layer: 5
   m_Name: Login_start_button
   m_TagString: Untagged
@@ -256,15 +255,3 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3033967942667702540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2195304723975655284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cc2d9536b248e841ab7560723d43f75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
