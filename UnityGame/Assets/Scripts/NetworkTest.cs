@@ -54,7 +54,7 @@ public class NetworkTest : MonoBehaviour
         
         Roll.onClick.AddListener(() =>
         {
-            Connection.Instance.Send(new ClientRoll { merchant = "default" });
+            Connection.Instance.Send(new ClientRoll { merchant = "first" });
         });
         
         Connection.Instance.Connected += OnConnected;
