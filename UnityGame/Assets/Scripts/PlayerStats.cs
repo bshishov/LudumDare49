@@ -16,11 +16,19 @@ public class PlayerStats : Singleton<PlayerStats>
     public RolledItem[] playerItems;
 
     public string PlayerID { get; private set; }
+    public string Username { get; set; }
     public int Gold { get; private set; }
     public int Power { get; private set; }
 
     private string _playerIdPrefs = "PlayerID";
+    private const string UsernameKey = "username";
 
+    private void Awake()
+    {
+        if (PlayerPrefs.HasKey(UsernameKey))
+            Username = PlayerPrefs.GetString(UsernameKey);
+    }
+    
     public void Start()
     {
         LoadPlayerID();
@@ -53,11 +61,13 @@ public class PlayerStats : Singleton<PlayerStats>
     private void Save()
     {
         PlayerPrefs.SetString("PlayerID", PlayerID);
+        PlayerPrefs.SetString(UsernameKey, Username);
         PlayerPrefs.Save();
     }
 
     private void OnServerHello(ServerHello hello)
     {
+        Save();
         UpdatePlayer(hello.player);
 
         //player exit when roll item 
