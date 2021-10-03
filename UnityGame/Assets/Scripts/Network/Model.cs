@@ -56,6 +56,7 @@ namespace Network
             public float last_gold_update_time;
             public RolledItem[] items;
             public RolledItem? current_undecided_roll_item;
+            public string division_id;
         }
 
         [Serializable]
