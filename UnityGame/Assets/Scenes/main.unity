@@ -894,7 +894,6 @@ GameObject:
   m_Component:
   - component: {fileID: 869213654}
   - component: {fileID: 869213655}
-  - component: {fileID: 869213656}
   m_Layer: 5
   m_Name: Equipment
   m_TagString: Untagged
@@ -947,26 +946,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &869213656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 869213653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f05737b377e201d43afa79f6a42be6cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Head: {fileID: 11400000, guid: a8c26e873fbe63b4eb145c46ea45646c, type: 2}
-  Weapon: {fileID: 11400000, guid: ba516db8329223747901f87e36f66948, type: 2}
-  Trinket: {fileID: 11400000, guid: 539ae2118e4deba4181e065f0d69e2b9, type: 2}
-  Body: {fileID: 11400000, guid: ff7470d09d9bb72488a7d62d8ee8debb, type: 2}
-  Boots: {fileID: 11400000, guid: 88aaeb382349c0346a7a9822d343bf4d, type: 2}
-  Item: {fileID: 2940007067987947688, guid: 0482b3b34cb82bc4ca517977c99ed3c3, type: 3}
-  PlayerEquipeTypes: 0000000002000000030000000100000004000000
-  UITotalPower: {fileID: 0}
 --- !u!1 &950952713
 GameObject:
   m_ObjectHideFlags: 0
