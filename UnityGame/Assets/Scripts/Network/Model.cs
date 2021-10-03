@@ -54,6 +54,14 @@ namespace Network
             public RolledItem[] items;
             public RolledItem? current_undecided_roll_item;
         }
+
+        [Serializable]
+        public struct DivisionPlayer
+        {
+            public string username;
+            public int rank;
+            public int power;
+        }
     }
 
     namespace Messages
