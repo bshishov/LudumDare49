@@ -5,11 +5,16 @@ using System;
 using System.Linq;
 using UnityEngine;
 using Utils;
+using Network.Game;
 
 public class PlayerStats : Singleton<PlayerStats>
 {
     public event Action IdReceived;
     public event Action PlayerStatsChanged;
+
+
+    public RolledItem[] playerItems;
+
     public string PlayerID { get; private set; }
     public int Gold { get; private set; }
     public int Power { get; private set; }
@@ -78,7 +83,6 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         Gold = player.gold;
         Power = CalculatePower(player);
-        Debug.Log(Gold);
         /*
         UpdateItemsText(player);
 
@@ -92,7 +96,7 @@ public class PlayerStats : Singleton<PlayerStats>
             RolledItem.text = "";
         }*/
 
-
+        playerItems = player.items;
         PlayerStatsChanged?.Invoke();
     }
 

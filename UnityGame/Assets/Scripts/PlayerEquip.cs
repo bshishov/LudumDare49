@@ -8,20 +8,27 @@ public class PlayerEquip : MonoBehaviour
     public List<ItemType> SlotsTypeOrder = new List<ItemType>();
     public List<Image> ItemIcons = new List<Image>();
     public List<Image> SlotIcons = new List<Image>();
-    public List<TextMeshProUGUI>  SlotsPower = new List<TextMeshProUGUI>();
+    public List<TextMeshProUGUI> SlotsPower = new List<TextMeshProUGUI>();
 
     private void Start()
     {
-        PlayerStats.Instance.PlayerStatsChanged += SetStartPLayerItem;
+        PlayerStats.Instance.PlayerStatsChanged += SetPlayerItems;
     }
 
-    private void SetStartPLayerItem()
+    private void SetPlayerItems()
     {
-    }
+        var rolledItems = PlayerStats.Instance.playerItems;
+        foreach (var rolledItem in rolledItems)
+        {
+            for (int i = 0; i < SlotsTypeOrder.Count; i++)
+            {
+                if (rolledItem.item.slot == SlotsTypeOrder[i].ToString())
+                {
+                    SlotsPower[i].text = rolledItem.item.power.ToString();
 
-    public void SetNewPlayerItem(Item item)
-    {
-    
+                }
+            }
+        }
     }
 
 }

@@ -1,5 +1,6 @@
 using Network;
 using Network.Messages;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,11 +14,16 @@ namespace UI
         {
             RollButton.SetActive(true);
             RollButton.GetComponent<Button>().onClick.AddListener(TryRollItem);
+            Connection.Instance.MessageReceived.AddListener<ServerRollSuccess>(OnServerRollSuccess);
+        }
+
+        private void OnServerRollSuccess(ServerRollSuccess obj)
+        { 
+            RollButton.SetActive(false);
         }
 
         private void TryRollItem()
         {
-            RollButton.SetActive(false);
             Connection.Instance.Send(new ClientRoll { merchant = "first" });
         }
 
