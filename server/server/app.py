@@ -1,4 +1,4 @@
-from typing import Set, Optional
+from typing import Set, Optional, List
 import asyncio
 import logging
 from contextlib import asynccontextmanager
@@ -6,7 +6,7 @@ import datetime
 from uuid import uuid4
 
 import server.messages as msg
-from server.db import IPlayerDatabase, PlayerDbEntry, DivisionDbEntry
+from server.db import *
 from server.game import *
 
 __all__ = [
@@ -180,13 +180,12 @@ class Application:
             connection: PlayerConnection,
             message: msg.ClientDivisionInfoRequest
     ):
-        standings = self._game.generate_division_standings()
         player = connection.player
         if player is None:
             connection.send(msg.ServerError(error=NotAuthorizedError().error_code))
             return
 
-        players_in_division = []
+        players_in_division: List[Player] = []
         division = self._db.get_division(player.division_id)
         if division:
             for player_id in division.player_ids:
@@ -194,7 +193,7 @@ class Application:
                 if p is not None:  # Might be none if invalid key
                     players_in_division.append(p.player)
 
-        players_in_division = sorted(players_in_division, key=lambda i: i.power, reverse=True)
+        players_in_division = sorted(players_in_division, key=lambda i: i.total_power, reverse=True)
         division_standing_players = []
         for rank, p in enumerate(players_in_division):
             division_standing_players.append(DivisionPlayer(
@@ -203,7 +202,12 @@ class Application:
                 power=p.total_power
             ))
 
-        connection.send(msg.ServerDivisionInfo(standings=standings))
+        connection.send(msg.ServerDivisionInfo(standings=DivisionInfo(
+            division_id=player.division_id,
+            players=division_standing_players,
+            next_update_at=datetime.datetime.now() + datetime.timedelta(hours=1000),
+            league_id=self._db.get_division(player.division_id).league_id
+        )))
 
     async def gold_update_routine(self):
         interval = self._game.income_update_interval
