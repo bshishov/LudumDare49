@@ -58,11 +58,13 @@ namespace UI
 
         private void UpdateStandings(DivisionStandings standings)
         {
-            PlayerList.Clear();
-
-            foreach (var divisionPlayer in standings.players.OrderBy(p => p.rank))
+            if (PlayerList)
             {
-                PlayerList.Add(divisionPlayer);
+                PlayerList.Clear();
+                foreach (var divisionPlayer in standings.players.OrderBy(p => p.rank))
+                {
+                    PlayerList.Add(divisionPlayer);
+                }
             }
 
             LeagueName.text = $"{standings.league_id} League";
