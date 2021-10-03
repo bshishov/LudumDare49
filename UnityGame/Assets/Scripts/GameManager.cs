@@ -1,3 +1,4 @@
+using System;
 using Network;
 using Network.Messages;
 using UI.Scripts;
@@ -29,6 +30,14 @@ public class GameManager : Singleton<GameManager>
 
         // Todo: subscribe to connection
         Connection.Instance.Connect("ws://unsmith.shishov.me/");
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            TransitionToLeagueDivision();
+        }
     }
 
     public void TransitionToLogin()
