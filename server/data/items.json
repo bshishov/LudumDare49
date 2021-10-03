@@ -1,32 +1,152 @@
 [
   {
-    "id": "debug_head",
-    "power": 10,
+    "id": "cocked_hat_common",
+    "power": 7,
     "slot": "head",
     "rarity": "common"
   },
   {
-    "id": "debug_body",
+    "id": "sombrero_uncommon",
+    "power": 8,
+    "slot": "head",
+    "rarity": "uncommon"
+  },
+  {
+    "id": "shrek_hat_rare",
+    "power": 9,
+    "slot": "head",
+    "rarity": "rare"
+  },
+  {
+    "id": "horned_helmet_epic",
     "power": 10,
+    "slot": "head",
+    "rarity": "epic"
+  },
+  {
+    "id": "astornaut_helmet_legendary",
+    "power": 12,
+    "slot": "head",
+    "rarity": "legendary"
+  },
+  {
+    "id": "maid_common",
+    "power": 9,
+    "slot": "body",
+    "rarity": "common"
+  },
+  {
+    "id": "tshirt_uncommon",
+    "power": 10,
+    "slot": "body",
+    "rarity": "uncommon"
+  },
+  {
+    "id": "crab_rare",
+    "power": 11,
     "slot": "body",
     "rarity": "rare"
   },
   {
-    "id": "debug_boots",
-    "power": 10,
+    "id": "sumo_epic",
+    "power": 12,
+    "slot": "body",
+    "rarity": "epic"
+  },
+  {
+    "id": "dino_legendary",
+    "power": 14,
+    "slot": "body",
+    "rarity": "legendary"
+  },
+  {
+    "id": "brick_common",
+    "power": 7,
+    "slot": "boots",
+    "rarity": "common"
+  },
+  {
+    "id": "shoe_uncommon",
+    "power": 8,
+    "slot": "boots",
+    "rarity": "uncommon"
+  },
+  {
+    "id": "ankle_rare",
+    "power": 9,
     "slot": "boots",
     "rarity": "rare"
   },
   {
-    "id": "debug_weapon",
+    "id": "rollers_epic",
     "power": 10,
-    "slot": "weapon",
+    "slot": "boots",
+    "rarity": "epic"
+  },
+  {
+    "id": "armor_legendary",
+    "power": 12,
+    "slot": "boots",
     "rarity": "legendary"
   },
   {
-    "id": "debug_trinket",
+    "id": "donut_common",
+    "power": 5,
+    "slot": "trinket",
+    "rarity": "common"
+  },
+  {
+    "id": "logo_ld_uncommon",
+    "power": 6,
+    "slot": "trinket",
+    "rarity": "uncommon"
+  },
+  {
+    "id": "crystal_rare",
+    "power": 7,
+    "slot": "trinket",
+    "rarity": "rare"
+  },
+  {
+    "id": "new_item_19_epic",
+    "power": 8,
+    "slot": "trinket",
+    "rarity": "epic"
+  },
+  {
+    "id": "illuminati_legendary",
     "power": 10,
     "slot": "trinket",
+    "rarity": "legendary"
+  },
+  {
+    "id": "fan_common",
+    "power": 11,
+    "slot": "weapon",
+    "rarity": "common"
+  },
+  {
+    "id": "fork_uncommon",
+    "power": 12,
+    "slot": "weapon",
+    "rarity": "uncommon"
+  },
+  {
+    "id": "dagger_rare",
+    "power": 13,
+    "slot": "weapon",
+    "rarity": "rare"
+  },
+  {
+    "id": "bow_epic",
+    "power": 14,
+    "slot": "weapon",
+    "rarity": "epic"
+  },
+  {
+    "id": "mace_legendary",
+    "power": 16,
+    "slot": "weapon",
     "rarity": "legendary"
   }
 ]
