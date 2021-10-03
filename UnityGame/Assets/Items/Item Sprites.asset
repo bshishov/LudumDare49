@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79edea3ea7cb7b34284f737e73197e5a, type: 3}
+  m_Name: Item Sprites
+  m_EditorClassIdentifier: 
+  AllItems:
+  - Image: {fileID: -6944442807476076664, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - cocked_hat_common
+    - cocked_hat_uncommon
+  - Image: {fileID: -488960805884691795, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - sombrero_uncommon
+    - sombrero_rare
+  - Image: {fileID: 1111326850985772410, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - horned_helmet_epic
+    - horned_helmetastronaut_helmet_legendary
+  - Image: {fileID: 6516477626123828977, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - shrek_hat_rare
+    - shrek_hat_epic
+  - Image: {fileID: 4292093838818592524, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - maid_common
+    - maid_uncommon
+  - Image: {fileID: 3645806850205619996, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - tshirt_uncommon
+    - tshirt_rare
+  - Image: {fileID: 2443854231322294201, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - crab_rare
+    - crab_epic
+  - Image: {fileID: -1913856051480559745, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - sumo_epic
+    - sumo_legendary
+  - Image: {fileID: 6337061489386054138, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - dino_legendary
+  - Image: {fileID: -1335942051314000182, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - brick_common
+    - brick_uncommon
+  - Image: {fileID: -2823537277434043977, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - shoe_uncommon
+    - shoe_rare
+  - Image: {fileID: 1804026284618680743, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - ankle_rare
+    - ankle_epic
+  - Image: {fileID: 7068340545402021932, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - rollers_epic
+    - rollers_legendary
+  - Image: {fileID: -1048755475593611206, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - armor_legendary
+  - Image: {fileID: 7959893547738517981, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - donut_common
+    - donut_uncommon
+  - Image: {fileID: -3164102853998766618, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - logo_ld_uncommon
+    - logo_ld_rare
+  - Image: {fileID: 5455200183122024688, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - crystal_rare
+    - crystal_epic
+  - Image: {fileID: -8094714545451684176, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - new_item_19_legendary
+    - new_item_19_epic
+  - Image: {fileID: -8899181592583176603, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - illuminati_legendary
+  - Image: {fileID: -342064925249747693, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - fan_common
+    - fan_uncommon
+  - Image: {fileID: 2950633475763028523, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - fork_uncommon
+    - fork_rare
+  - Image: {fileID: -5380172762212921893, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - dagger_rare
+    - dagger_epic
+  - Image: {fileID: -7932089635107126367, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - bow_epic
+    - bow_legendary
+  - Image: {fileID: -5841689769624622280, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - mace_legendary
+  - Image: {fileID: 0}
+    ID: []

@@ -35,7 +35,14 @@ public class PlayerStats : Singleton<PlayerStats>
         Connection.Instance.MessageReceived.AddListener<ServerHello>(OnServerHello);
         Connection.Instance.MessageReceived.AddListener<ServerRollSuccess>(OnServerRollSuccess);
         Connection.Instance.MessageReceived.AddListener<ServerRollDecided>(OnServerRollDecided);
+        Connection.Instance.MessageReceived.AddListener<ServerGoldUpdated>(OnServerGoldUpdated);
         //Connection.Instance.MessageReceived.AddListener<ServerGoldUpdated>(OnServerGoldUpdated);
+    }
+
+    private void OnServerGoldUpdated(ServerGoldUpdated massage)
+    {
+        Gold = massage.new_gold;
+        PlayerStatsChanged?.Invoke();
     }
 
     private void LoadPlayerID()
