@@ -6,7 +6,7 @@ import datetime
 from uuid import uuid4
 
 import server.messages as msg
-from server.db import IPlayerDatabase, PlayerDbEntry, DivisionDbEntry
+from server.db import *
 from server.game import *
 
 __all__ = [
@@ -180,7 +180,6 @@ class Application:
             connection: PlayerConnection,
             message: msg.ClientDivisionInfoRequest
     ):
-        standings = self._game.generate_division_standings()
         player = connection.player
         if player is None:
             connection.send(msg.ServerError(error=NotAuthorizedError().error_code))
@@ -203,7 +202,11 @@ class Application:
                 power=p.total_power
             ))
 
-        connection.send(msg.ServerDivisionInfo(standings=standings))
+        connection.send(msg.ServerDivisionInfo(standings=DivisionInfo(
+            division_id=player.division_id,
+            players=division_standing_players,
+            next_update_at=datetime.datetime.now() + datetime.timedelta(hours=1000)
+        )))
 
     async def gold_update_routine(self):
         interval = self._game.income_update_interval
