@@ -4,13 +4,18 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Audio;
 
 namespace UI
 {
     public class UIRoll : MonoBehaviour
     {
         public GameObject RollButton;
+        public GameObject NotEnough;
         public Merchant Merchant;
+
+        [SerializeField] private SoundAsset RollSound;
+        [SerializeField] private SoundAsset NoMoneySound;
 
         private void Start()
         {
@@ -22,6 +27,7 @@ namespace UI
 
         private void OnServerRollSuccess(ServerRollSuccess obj)
         {
+            SoundManager.Instance.Play(RollSound);
             Merchant.BeginCharge();
             RollButton.SetActive(false);
         }
@@ -34,6 +40,15 @@ namespace UI
         public void ActivateButton()
         {
             RollButton.SetActive(true);
+        }
+
+        private void Update()
+        {
+            if (PlayerStats.Instance.Gold < 100)
+            {
+                NotEnough.SetActive(true);
+            }
+            else { NotEnough.SetActive(false); }
         }
     }
 }
