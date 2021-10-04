@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Audio;
 
 namespace UI
 {
@@ -11,6 +12,9 @@ namespace UI
     {
         public GameObject RollButton;
         public Merchant Merchant;
+
+        [SerializeField] private SoundAsset RollSound;
+        [SerializeField] private SoundAsset NoMoneySound;
 
         private void Start()
         {
@@ -22,6 +26,7 @@ namespace UI
 
         private void OnServerRollSuccess(ServerRollSuccess obj)
         {
+            SoundManager.Instance.Play(RollSound);
             Merchant.BeginCharge();
             RollButton.SetActive(false);
         }
