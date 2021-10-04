@@ -55,16 +55,14 @@ namespace UI
                         {
                             var indexOfRarity = (int)Enum.Parse(typeof(ItemRarity), massage.rolled_item.item.rarity);
                             NewItemImage[i].color = ItemsSprite.RarityColor[indexOfRarity];
-
                             NewItemImage[i].sprite = ItemsSprite.AllItems[j].Image;
-                            NewItemImage[i].material = RarityMaterial;
                         }
 
                     }
                 }
             }
 
-            OldItemImage.sprite = PlayerEquip.GetItemSprite(massage.rolled_item.item.slot);
+           OldItemImage.sprite = PlayerEquip.GetItemSprite(massage.rolled_item.item.slot);
             OldItemImage.color = PlayerEquip.GetItemMaterialColor(massage.rolled_item.item.slot);
             OldItemPower.text = PlayerEquip.GetItemPower(massage.rolled_item.item.slot);
         }
