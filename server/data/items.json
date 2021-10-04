@@ -6,22 +6,28 @@
     "rarity": "common"
   },
   {
-    "id": "sombreroshrek_hat_uncommon",
+    "id": "sombrero_uncommon",
     "power": 8,
     "slot": "head",
     "rarity": "uncommon"
   },
   {
-    "id": "horned_helmet_rare",
+    "id": "shrek_hat_rare",
     "power": 9,
     "slot": "head",
     "rarity": "rare"
   },
   {
-    "id": "astronaut_helmet_epic",
+    "id": "horned_helmet_epic",
     "power": 10,
     "slot": "head",
     "rarity": "epic"
+  },
+  {
+    "id": "astronaut_helmet_legendary",
+    "power": 12,
+    "slot": "head",
+    "rarity": "legendary"
   },
   {
     "id": "maid_common",
