@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RollButton: {fileID: 8327136202114262963}
+  Merchant: {fileID: 0}
 --- !u!114 &4377421260067861346
 MonoBehaviour:
   m_ObjectHideFlags: 0

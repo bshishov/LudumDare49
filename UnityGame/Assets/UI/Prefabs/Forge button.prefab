@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 7540173443950680004}
   - component: {fileID: 7540173443950680003}
   - component: {fileID: 1466738636057232225}
+  - component: {fileID: 2375196307156010526}
   m_Layer: 5
   m_Name: Forge button
   m_TagString: Untagged
@@ -233,6 +234,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RollButton: {fileID: 0}
+  Merchant: {fileID: 0}
+--- !u!114 &2375196307156010526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7540173443950680001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5115cc9a7e827684292e582750c5c8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 7540173443950680003}
 --- !u!1 &7540173443995931787
 GameObject:
   m_ObjectHideFlags: 0

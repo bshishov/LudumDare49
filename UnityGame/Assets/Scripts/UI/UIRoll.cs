@@ -2,6 +2,7 @@ using Network;
 using Network.Messages;
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace UI
@@ -17,6 +18,7 @@ namespace UI
             RollButton.GetComponent<Button>().onClick.AddListener(TryRollItem);
             Connection.Instance.MessageReceived.AddListener<ServerRollSuccess>(OnServerRollSuccess);
         }
+      
 
         private void OnServerRollSuccess(ServerRollSuccess obj)
         {
