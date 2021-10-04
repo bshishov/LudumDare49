@@ -35,6 +35,8 @@ public class UIGoldTime : MonoBehaviour
         {
             _sliderSpeed = 0;
         }
+
+        Slider.value = 0;
     }
 
     private void OnServerHello(ServerHello obj)

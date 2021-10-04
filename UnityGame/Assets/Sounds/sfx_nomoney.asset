@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c7508170bc487ebb422db540e3b498, type: 3}
   m_Name: sfx_nomoney
   m_EditorClassIdentifier: 
-  Clip: {fileID: 0}
+  Clip: {fileID: 8300000, guid: b03b39edd2f803f4baf468d4835a096f, type: 3}
   Loop: 0
   MixerGroup: {fileID: -9035450551968300087, guid: f042ef4b1d77f3746852b0b0aaeb10f7, type: 2}
   VolumeModifier: 1
