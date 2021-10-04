@@ -22,46 +22,46 @@ MonoBehaviour:
   - Image: {fileID: -6944442807476076664, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - cocked_hat_common
-    - cocked_hat_uncommon
+    - cocked_hat_common
   - Image: {fileID: -488960805884691795, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - sombrero_uncommon
-    - sombrero_rare
+    - sombrero_uncommon
   - Image: {fileID: 1111326850985772410, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - horned_helmet_epic
-    - horned_helmet_legendary
+    - horned_helmet_epic
   - Image: {fileID: 6516477626123828977, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - shrek_hat_rare
-    - shrek_hat_epic
+    - shrek_hat_rare
   - Image: {fileID: 4292093838818592524, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - maid_common
-    - maid_uncommon
+    - maid_common
   - Image: {fileID: 3645806850205619996, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - tshirt_uncommon
-    - tshirt_rare
+    - tshirt_common
   - Image: {fileID: 2443854231322294201, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - crab_rare
-    - crab_epic
+    - crab_rare
   - Image: {fileID: -1913856051480559745, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - sumo_epic
-    - sumo_legendary
+    - sumo_epic
   - Image: {fileID: 6337061489386054138, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - dino_legendary
   - Image: {fileID: -1335942051314000182, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - brick_common
-    - brick_uncommon
+    - brick_common
   - Image: {fileID: -2823537277434043977, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - shoe_uncommon
-    - shoe_rare
+    - shoe_common
   - Image: {fileID: 1804026284618680743, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - ankle_rare
@@ -69,48 +69,63 @@ MonoBehaviour:
   - Image: {fileID: 7068340545402021932, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - rollers_epic
-    - rollers_legendary
+    - rollers_uncommon
   - Image: {fileID: -1048755475593611206, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - armor_legendary
   - Image: {fileID: 7959893547738517981, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - donut_common
-    - donut_uncommon
+    - donut_common
   - Image: {fileID: -3164102853998766618, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - logo_ld_uncommon
-    - logo_ld_rare
+    - logo_ld_common
   - Image: {fileID: 5455200183122024688, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - crystal_rare
-    - crystal_epic
+    - crystal_uncommon
   - Image: {fileID: -8094714545451684176, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - new_item_19_legendary
-    - new_item_19_epic
+    - new_item_19_rare
   - Image: {fileID: -8899181592583176603, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
-    - illuminati_legendary
+    - illuminati_epic
   - Image: {fileID: -342064925249747693, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - fan_common
-    - fan_uncommon
+    - fan_common
   - Image: {fileID: 2950633475763028523, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - fork_uncommon
-    - fork_rare
+    - fork_common
   - Image: {fileID: -5380172762212921893, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - dagger_rare
-    - dagger_epic
+    - dagger_uncommon
   - Image: {fileID: -7932089635107126367, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - bow_epic
-    - bow_legendary
+    - bow_rare
   - Image: {fileID: -5841689769624622280, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - mace_legendary
   - Image: {fileID: 8837413427220791341, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - astronaut_helmet_legendary
+  - Image: {fileID: 8837413427220791341, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - hammer_legendary
+  - Image: {fileID: 8837413427220791341, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - company_legendary
+  - Image: {fileID: 8837413427220791341, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - ski_rare
+  - Image: {fileID: 8837413427220791341, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - cape_uncommon
+  - Image: {fileID: 8837413427220791341, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+    ID:
+    - bucket_common
