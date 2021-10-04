@@ -1470,6 +1470,10 @@ PrefabInstance:
       propertyPath: RollSound
       value: 
       objectReference: {fileID: 11400000, guid: 1f37cdfb3ba45dc4c88fbfed678880dd, type: 2}
+    - target: {fileID: 2134010203238460735, guid: 2d39e90cc8056644c97f6a16338c5ae2, type: 3}
+      propertyPath: NoMoneySound
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b905c456f50a404aaf5ac55b00ad097, type: 2}
     - target: {fileID: 4320723729804430241, guid: 2d39e90cc8056644c97f6a16338c5ae2, type: 3}
       propertyPath: m_Name
       value: Game_Roll_Button
