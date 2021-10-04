@@ -35,4 +35,13 @@ namespace UI
         epic,
         legendary
     }
+
+    public enum ItemQuality
+    {
+        shitty,
+        bad,
+        normal,
+        good,
+        divine
+    }
 }

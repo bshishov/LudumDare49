@@ -40,7 +40,7 @@ public class PlayerEquip : MonoBehaviour
                         ItemIcons[slotIndex].sprite = ItemsSprite.AllItems[j].Image;
                         ItemIcons[slotIndex].material = RarityMaterial;
 
-                        var indexOfRarity = (int)Enum.Parse(typeof(ItemRarity), rolledItem.item.rarity);
+                        var indexOfRarity = (int)Enum.Parse(typeof(ItemQuality), rolledItem.quality);
                         ItemIcons[slotIndex].color = ItemsSprite.RarityColor[indexOfRarity];
                     }
                 }

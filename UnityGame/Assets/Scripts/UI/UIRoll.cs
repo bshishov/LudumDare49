@@ -22,8 +22,26 @@ namespace UI
             RollButton.SetActive(true);
             RollButton.GetComponent<Button>().onClick.AddListener(TryRollItem);
             Connection.Instance.MessageReceived.AddListener<ServerRollSuccess>(OnServerRollSuccess);
+            Connection.Instance.MessageReceived.AddListener<ServerError>(OnServerError);
+            Connection.Instance.MessageReceived.AddListener<ServerGoldUpdated>(OnServerGoldUpdated);
         }
-      
+
+        private void OnServerGoldUpdated(ServerGoldUpdated massage)
+        {
+            if (massage.new_gold > 100 && NotEnough.activeSelf)
+            {
+                NotEnough.SetActive(false);
+            }
+        }
+
+        private void OnServerError(ServerError obj)
+        {
+            if (obj.error == "not_enough_gold")
+            {
+                NotEnough.SetActive(true);
+            }
+        }
+
 
         private void OnServerRollSuccess(ServerRollSuccess obj)
         {
@@ -42,13 +60,5 @@ namespace UI
             RollButton.SetActive(true);
         }
 
-        private void Update()
-        {
-            if (PlayerStats.Instance.Gold < 100)
-            {
-                NotEnough.SetActive(true);
-            }
-            else { NotEnough.SetActive(false); }
-        }
     }
 }
