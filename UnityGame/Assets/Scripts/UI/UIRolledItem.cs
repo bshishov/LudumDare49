@@ -11,7 +11,7 @@ namespace UI
     public class UIRolledItem : MonoBehaviour
     {
         public Merchant Merchant;
-
+        public TextMeshProUGUI QualityText;
         public Image ItemSlot;
 
         public ItemsSprite ItemsSprite;
@@ -77,6 +77,8 @@ namespace UI
                     }
                 }
             }
+
+            QualityText.text = massage.rolled_item.quality;
 
             ItemSlot.sprite = PlayerEquip.GetSlotSprite(massage.rolled_item.item.slot);
             OldItemImage.sprite = PlayerEquip.GetItemSprite(massage.rolled_item.item.slot);
