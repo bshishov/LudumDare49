@@ -70,7 +70,7 @@ namespace UI
                     {
                         for (int i = 0; i < NewItemImage.Length; i++)
                         {
-                            var indexOfRarity = (int)Enum.Parse(typeof(ItemRarity), massage.rolled_item.item.rarity);
+                            var indexOfRarity = (int)Enum.Parse(typeof(ItemQuality), massage.rolled_item.quality);
                             NewItemImage[i].color = ItemsSprite.RarityColor[indexOfRarity];
                             NewItemImage[i].sprite = ItemsSprite.AllItems[j].Image;
                         }
