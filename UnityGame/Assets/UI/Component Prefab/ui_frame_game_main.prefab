@@ -1561,6 +1561,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game_Background
       objectReference: {fileID: 0}
+    - target: {fileID: 5867333141264495722, guid: 50a4333b77cf2704182b4f6f101d4380, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6437714743749936720, guid: 50a4333b77cf2704182b4f6f101d4380, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -1859,7 +1863,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6647066723338326309, guid: 40245e087dbfe9444929dde1a4bd5407, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -135
+      value: -0.000061035156
       objectReference: {fileID: 0}
     - target: {fileID: 6647066723528789868, guid: 40245e087dbfe9444929dde1a4bd5407, type: 3}
       propertyPath: m_AnchorMax.x
