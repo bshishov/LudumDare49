@@ -42,7 +42,7 @@ namespace UI
 
         IEnumerator MerchantWait(ServerRollSuccess massage)
         {
-            yield return new WaitForSeconds(UnityEngine.Random.Range(1f, 2.5f));
+            yield return new WaitForSeconds(1.5f);
 
             Merchant.EndCharge();
 
