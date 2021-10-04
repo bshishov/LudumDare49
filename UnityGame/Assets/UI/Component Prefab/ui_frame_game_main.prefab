@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7247480879950917091}
   m_Layer: 5
-  m_Name: Game Frame
+  m_Name: ui_frame_game_main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -471,6 +471,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6647066722971665961, guid: 40245e087dbfe9444929dde1a4bd5407, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6647066723281313433, guid: 40245e087dbfe9444929dde1a4bd5407, type: 3}
       propertyPath: m_Value
       value: 0
@@ -483,9 +487,13 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6647066723281313435, guid: 40245e087dbfe9444929dde1a4bd5407, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6647066723338326309, guid: 40245e087dbfe9444929dde1a4bd5407, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.000015258789
+      value: 0.000045776367
       objectReference: {fileID: 0}
     - target: {fileID: 6647066723528789868, guid: 40245e087dbfe9444929dde1a4bd5407, type: 3}
       propertyPath: m_AnchorMax.x

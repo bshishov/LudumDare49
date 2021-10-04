@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UI;
+using System;
 
 public class PlayerEquip : MonoBehaviour
 {
@@ -20,54 +21,46 @@ public class PlayerEquip : MonoBehaviour
 
     private void SetPlayerItems()
     {
-        //TODO fix this shit
         var rolledItems = PlayerStats.Instance.playerItems;
         foreach (var rolledItem in rolledItems)
         {
-            for (int i = 0; i < SlotsTypeOrder.Count; i++)
+            var slotIndex = SlotsTypeOrder.IndexOf((ItemType)Enum.Parse(typeof(ItemType), rolledItem.item.slot));
+            SlotsPower[slotIndex].text = rolledItem.total_power.ToString();
+
+            for (int j = 0; j < ItemsSprite.AllItems.Count; j++)
             {
-                if (rolledItem.item.slot == SlotsTypeOrder[i].ToString())
+                for (int k = 0; k < ItemsSprite.AllItems[j].ID.Length; k++)
                 {
-                    SlotsPower[i].text = rolledItem.total_power.ToString();
-                    for (int j = 0; j < ItemsSprite.AllItems.Count; j++)
+                    if (ItemsSprite.AllItems[j].ID[k] == rolledItem.item.id)
                     {
-                        for (int k = 0; k < ItemsSprite.AllItems[j].ID.Length; k++)
-                        {
+                        ItemIcons[slotIndex].sprite = ItemsSprite.AllItems[j].Image;
+                        ItemIcons[slotIndex].material = RarityMaterial;
 
-                            if (ItemsSprite.AllItems[j].ID[k] == rolledItem.item.id)
-                            {
-                                ItemIcons[i].sprite = ItemsSprite.AllItems[j].Image;
-                                ItemIcons[i].material = RarityMaterial;
-                            }
-                        }
-
+                        var indexOfRarity = (int)Enum.Parse(typeof(ItemRarity), rolledItem.item.rarity);
+                        ItemIcons[slotIndex].color = ItemsSprite.RarityColor[indexOfRarity];
                     }
                 }
+
             }
         }
     }
 
-    public Sprite GetItemImage(string slot)
+    public Color GetItemMaterialColor(string slot)
     {
-        for (int i = 0; i < SlotsTypeOrder.Count; i++)
-        {
-            if (slot == SlotsTypeOrder[i].ToString())
-            {
-                return ItemIcons[i].sprite;
-            }
-        }
-        return ItemIcons[0].sprite;
+        var itemIndex = SlotsTypeOrder.IndexOf((ItemType)Enum.Parse(typeof(ItemType), slot));
+        return ItemIcons[itemIndex].color;
     }
+
+    public Sprite GetItemSprite(string slot)
+    {
+        var itemIndex = SlotsTypeOrder.IndexOf((ItemType)Enum.Parse(typeof(ItemType), slot));
+        return ItemIcons[itemIndex].sprite;
+    }
+
     public string GetItemPower(string slot)
     {
-        for (int i = 0; i < SlotsTypeOrder.Count; i++)
-        {
-            if (slot == SlotsTypeOrder[i].ToString())
-            {
-                return SlotsPower[i].text;
-            }
-        }
-        return "";
+        var itemIndex = SlotsTypeOrder.IndexOf((ItemType)Enum.Parse(typeof(ItemType), slot));
+        return SlotsPower[itemIndex].text;
     }
 
 }

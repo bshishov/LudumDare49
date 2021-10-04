@@ -6,6 +6,7 @@ namespace UI
     [CreateAssetMenu(fileName = "New Items", menuName = "Item Images")]
     public class ItemsSprite : ScriptableObject
     {
+        public List<Color> RarityColor = new List<Color>();
         public List<ItemsImage> AllItems = new List<ItemsImage>();
     }
 
@@ -24,5 +25,14 @@ namespace UI
         weapon,
         trinket,
         boots
+    }
+
+    public enum ItemRarity
+    {
+        common,
+        uncommon,
+        rare,
+        epic,
+        legendary
     }
 }

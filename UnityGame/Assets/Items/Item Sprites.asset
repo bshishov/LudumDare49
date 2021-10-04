@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79edea3ea7cb7b34284f737e73197e5a, type: 3}
   m_Name: Item Sprites
   m_EditorClassIdentifier: 
+  RarityColor:
+  - {r: 0.6415094, g: 0.60257226, b: 0.5184525, a: 1}
+  - {r: 0.3641073, g: 0.8018868, b: 0.322772, a: 1}
+  - {r: 1, g: 0.96446705, b: 0, a: 1}
+  - {r: 0.023638725, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0.4739378, b: 0, a: 1}
   AllItems:
   - Image: {fileID: -6944442807476076664, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
