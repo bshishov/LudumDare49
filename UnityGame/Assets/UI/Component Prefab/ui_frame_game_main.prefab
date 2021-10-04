@@ -1706,6 +1706,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: c22b85a7f2d1a0744adba36cc7bcea7b, type: 2}
     - target: {fileID: 1467791027342121029, guid: 40245e087dbfe9444929dde1a4bd5407, type: 3}
+      propertyPath: LeageButton
+      value: 
+      objectReference: {fileID: 1793871749584192239}
+    - target: {fileID: 1467791027342121029, guid: 40245e087dbfe9444929dde1a4bd5407, type: 3}
       propertyPath: PlayerEquip
       value: 
       objectReference: {fileID: 7419345382870474821}
@@ -1883,7 +1887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6647066722971665959, guid: 40245e087dbfe9444929dde1a4bd5407, type: 3}
       propertyPath: m_Size
-      value: 0.999755
+      value: 0.99979466
       objectReference: {fileID: 0}
     - target: {fileID: 6647066722971665959, guid: 40245e087dbfe9444929dde1a4bd5407, type: 3}
       propertyPath: m_Value
@@ -1943,7 +1947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6647066723533339727, guid: 40245e087dbfe9444929dde1a4bd5407, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -10
+      value: 151.425
       objectReference: {fileID: 0}
     - target: {fileID: 6647066724171164912, guid: 40245e087dbfe9444929dde1a4bd5407, type: 3}
       propertyPath: m_AnchoredPosition.y
