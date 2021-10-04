@@ -14,6 +14,7 @@ namespace UI
 
         public ItemsSprite ItemsSprite;
         public GameObject NewItemRoot;
+        public GameObject LeageButton;
 
         public PlayerEquip PlayerEquip;
 
@@ -27,6 +28,8 @@ namespace UI
 
         private UIRoll _uiRoll;
         private GameObject _rarityBackgrounds;
+
+
 
         private void Awake()
         {
@@ -42,12 +45,12 @@ namespace UI
 
         IEnumerator MerchantWait(ServerRollSuccess massage)
         {
+            LeageButton.SetActive(false);
             yield return new WaitForSeconds(1.5f);
 
             Merchant.EndCharge();
 
             yield return new WaitForSeconds(0.25f);
-
             NewItemRoot.SetActive(true);
 
             ActivateBackground(massage);
@@ -104,6 +107,8 @@ namespace UI
 
         public void HideRolledItem()
         {
+
+            LeageButton.SetActive(true);
             _rarityBackgrounds.SetActive(false);
             NewItemRoot.SetActive(false);
             _uiRoll.ActivateButton();

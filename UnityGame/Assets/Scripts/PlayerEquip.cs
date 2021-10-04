@@ -17,6 +17,10 @@ public class PlayerEquip : MonoBehaviour
     private void Start()
     {
         PlayerStats.Instance.PlayerStatsChanged += SetPlayerItems;
+        if (PlayerStats.Instance.playerItems.Length != 0)
+        {
+            SetPlayerItems();
+        }
     }
 
     private void SetPlayerItems()
