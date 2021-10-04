@@ -129,7 +129,7 @@ namespace Network
         {
             public int old_gold;
             public int new_gold;
-            public float next_update_time;
+            public double next_update_time;  // unix timestamp
         }
         
         [Serializable]
