@@ -67,4 +67,9 @@ public class PlayerEquip : MonoBehaviour
         return SlotsPower[itemIndex].text;
     }
 
+    internal Sprite GetSlotSprite(string slot)
+    {
+        var itemIndex = SlotsTypeOrder.IndexOf((ItemType)Enum.Parse(typeof(ItemType), slot));
+        return SlotIcons[itemIndex].sprite;
+    }
 }
