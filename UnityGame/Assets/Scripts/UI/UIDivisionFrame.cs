@@ -16,6 +16,8 @@ namespace UI
         public TextMeshProUGUI LeagueName;
         public TextMeshProUGUI NextUpdateAt;
         public Button RefreshButton;
+        public LeaguesData Leagues;
+        public Image Icon;
 
         private DateTime _targetUpdateTime = DateTime.Now;
 
@@ -72,7 +74,10 @@ namespace UI
                 }
             }
 
-            LeagueName.text = $"{standings.league_id} League";
+            var leagueData = Leagues.GetLeagueById(standings.league_id);
+
+            LeagueName.text = $"{leagueData.Name} League";
+            Icon.sprite = leagueData.Icon;
             _targetUpdateTime = UnixTimestampToDateTime(standings.next_update_at).ToLocalTime();
         }
 

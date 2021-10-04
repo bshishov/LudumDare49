@@ -13,6 +13,8 @@ public class UIGoldTime : MonoBehaviour
     {
         Connection.Instance.MessageReceived.AddListener<ServerHello>(OnServerHello);
         Connection.Instance.MessageReceived.AddListener<ServerGoldUpdated>(OnServerGoldUpdated);
+
+        Slider.interactable = false;
     }
 
     private void Update()
