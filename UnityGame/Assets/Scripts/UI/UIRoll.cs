@@ -24,6 +24,16 @@ namespace UI
             Connection.Instance.MessageReceived.AddListener<ServerRollSuccess>(OnServerRollSuccess);
             Connection.Instance.MessageReceived.AddListener<ServerError>(OnServerError);
             Connection.Instance.MessageReceived.AddListener<ServerGoldUpdated>(OnServerGoldUpdated);
+            Connection.Instance.MessageReceived.AddListener<ServerHello>(OnServerHello);
+         
+        }
+
+        private void OnServerHello(ServerHello massage)
+        {
+            if (massage.player.gold > 100)
+            {
+                NotEnough.SetActive(false);
+            }
         }
 
         private void OnServerGoldUpdated(ServerGoldUpdated massage)
