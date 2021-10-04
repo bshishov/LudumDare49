@@ -120,9 +120,12 @@ def main(host: str, port: int, data_path: str):
         leagues=leagues
     )
 
+    players_db_path = os.environ.get("PLAYERS_DB_PATH", "players.db")
+    divisions_db_path = os.environ.get("DIVISIONS_DB_PATH", "divisions.db")
+
     _logger.info(f"Loading db")
     application = Application(
-        db=PickleDb("players.db", "divisions.db"),
+        db=PickleDb(players_db_path, divisions_db_path),
         game=game
     )
     handler = WebsocketHandler(

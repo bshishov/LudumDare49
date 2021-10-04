@@ -114,18 +114,18 @@ MonoBehaviour:
   - Image: {fileID: 8837413427220791341, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - astronaut_helmet_legendary
-  - Image: {fileID: 8837413427220791341, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+  - Image: {fileID: 5701605271896286867, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - hammer_legendary
-  - Image: {fileID: 8837413427220791341, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+  - Image: {fileID: -3857561855097082282, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - company_legendary
-  - Image: {fileID: 8837413427220791341, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+  - Image: {fileID: 8046014867560653875, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - ski_rare
-  - Image: {fileID: 8837413427220791341, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+  - Image: {fileID: 2231530359905435707, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - cape_uncommon
-  - Image: {fileID: 8837413427220791341, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
+  - Image: {fileID: 7176008987929040414, guid: 52f4775917500744fadb9122de0d8f5c, type: 3}
     ID:
     - bucket_common
