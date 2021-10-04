@@ -314,7 +314,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1023
+        y: 1024
         width: 256
         height: 256
       alignment: 0
@@ -335,7 +335,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 1023
+        y: 1024
         width: 256
         height: 256
       alignment: 0
@@ -398,7 +398,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1024
-        y: 1025
+        y: 1024
         width: 256
         height: 256
       alignment: 0
@@ -419,7 +419,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 767
+        y: 768
         width: 256
         height: 256
       alignment: 0
@@ -440,7 +440,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 767
+        y: 768
         width: 256
         height: 256
       alignment: 0
@@ -461,7 +461,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 512
-        y: 767
+        y: 768
         width: 256
         height: 256
       alignment: 0
@@ -482,7 +482,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 768
-        y: 769
+        y: 768
         width: 256
         height: 256
       alignment: 0
@@ -503,7 +503,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1024
-        y: 767
+        y: 768
         width: 256
         height: 256
       alignment: 0
@@ -524,7 +524,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 510
+        y: 512
         width: 256
         height: 256
       alignment: 0
@@ -545,7 +545,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 510
+        y: 512
         width: 256
         height: 256
       alignment: 0
@@ -565,8 +565,8 @@ TextureImporter:
       name: tex_UI_Items_Body_04
       rect:
         serializedVersion: 2
-        x: 513
-        y: 511
+        x: 512
+        y: 512
         width: 256
         height: 256
       alignment: 0
@@ -586,8 +586,8 @@ TextureImporter:
       name: tex_UI_Items_Boots_04
       rect:
         serializedVersion: 2
-        x: 769
-        y: 511
+        x: 768
+        y: 512
         width: 256
         height: 256
       alignment: 0
@@ -608,7 +608,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1024
-        y: 511
+        y: 512
         width: 256
         height: 256
       alignment: 0
@@ -628,8 +628,8 @@ TextureImporter:
       name: tex_UI_Items_Head_05
       rect:
         serializedVersion: 2
-        x: 1
-        y: 253
+        x: 0
+        y: 256
         width: 256
         height: 256
       alignment: 0
@@ -649,8 +649,8 @@ TextureImporter:
       name: tex_UI_Items_Weapon_05
       rect:
         serializedVersion: 2
-        x: 252
-        y: 251
+        x: 256
+        y: 256
         width: 256
         height: 256
       alignment: 0
@@ -670,7 +670,7 @@ TextureImporter:
       name: tex_UI_Items_Body_05
       rect:
         serializedVersion: 2
-        x: 510
+        x: 512
         y: 256
         width: 256
         height: 256
@@ -692,7 +692,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 768
-        y: 254
+        y: 256
         width: 256
         height: 256
       alignment: 0
@@ -712,8 +712,8 @@ TextureImporter:
       name: tex_UI_Items_Trinket_05
       rect:
         serializedVersion: 2
-        x: 1023
-        y: 254
+        x: 1024
+        y: 256
         width: 256
         height: 256
       alignment: 0
@@ -738,7 +738,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -759,7 +759,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -780,7 +780,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -796,12 +796,12 @@ TextureImporter:
       name: tex_UI_Items_Atlas_01_3
       rect:
         serializedVersion: 2
-        x: 767
+        x: 768
         y: 0
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -817,12 +817,12 @@ TextureImporter:
       name: tex_UI_Items_Atlas_01_4
       rect:
         serializedVersion: 2
-        x: 1022
+        x: 1024
         y: 0
-        width: 254
+        width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
