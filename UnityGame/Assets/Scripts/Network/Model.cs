@@ -53,7 +53,7 @@ namespace Network
         {
             public string username;
             public int gold;
-            public float last_gold_update_time;
+            public double last_gold_update_time;
             public RolledItem[] items;
             public RolledItem? current_undecided_roll_item;
             public string division_id;

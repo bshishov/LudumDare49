@@ -347,7 +347,7 @@ def update_leagues(game: Game, db: IPlayerDatabase):
         players_in_division: List[PlayerDbEntry] = sorted(
             players_in_division,
             key=lambda p: p.player.total_power,
-            reverse=False
+            reverse=True
         )
 
         for rank, db_player in enumerate(players_in_division):
@@ -356,7 +356,7 @@ def update_leagues(game: Game, db: IPlayerDatabase):
             if rank < current_league.n_best_players:
                 # Upgrade
                 target_league_id = current_league.next_league_id
-            elif rank > len(players_in_division) - current_league.n_worst_players:
+            elif rank >= (game.settings.max_players_per_division - current_league.n_worst_players):
                 # Downgrade
                 target_league_id = current_league.prev_league_id
 
