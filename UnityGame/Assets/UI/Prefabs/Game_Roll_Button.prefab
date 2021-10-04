@@ -96,8 +96,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RollButton: {fileID: 8327136202114262963}
-  Merchant: {fileID: 0}
   NotEnough: {fileID: 842622104903974359}
+  Merchant: {fileID: 0}
+  RollSound: {fileID: 0}
+  NoMoneySound: {fileID: 0}
 --- !u!1 &6634887821433437602
 GameObject:
   m_ObjectHideFlags: 0
