@@ -63,6 +63,10 @@ namespace UI
 
         private void TryRollItem()
         {
+            if (PlayerStats.Instance.Gold < 100)
+            {
+                NotEnough.SetActive(true);
+            }
             Connection.Instance.Send(new ClientRoll { merchant = "first" });
         }
 
