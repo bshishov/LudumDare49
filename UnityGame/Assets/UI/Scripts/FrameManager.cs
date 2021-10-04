@@ -90,7 +90,7 @@ namespace UI.Scripts
                 }
                 else
                 {
-                    var sceneObject = Instantiate(element.Prefab, Root);
+                    var sceneObject = ActivateOrInstantiate(element.Prefab);
                     var instance = new FrameElementInstance
                     {
                         SceneObject = sceneObject,
@@ -145,7 +145,7 @@ namespace UI.Scripts
 
             foreach (var element in oldElements)
             {
-                Destroy(element.SceneObject);
+                Deactivate(element.SceneObject);
                 element.Data = null;
             }
 
@@ -166,6 +166,30 @@ namespace UI.Scripts
                 _activeElements.Add(instance);
             }
 
+        }
+        
+        private readonly Dictionary<int, GameObject> _pool = new Dictionary<int, GameObject>();
+        
+        private GameObject ActivateOrInstantiate(GameObject prefab)
+        {
+            // return Instantiate(prefab, Root); // OLD
+            
+            var instanceId = prefab.GetInstanceID();
+            if (_pool.ContainsKey(instanceId)) {
+                var go = _pool[instanceId];
+                go.SetActive(true);
+                return go;
+            }
+
+            var instance = Instantiate(prefab, Root);
+            _pool[instanceId] = instance;
+            return instance;
+        }
+
+        private void Deactivate(GameObject instance)
+        {
+            // Destroy(instance); // OLD
+            instance.SetActive(false);
         }
     }
 }
