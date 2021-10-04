@@ -42,7 +42,7 @@ namespace UI
 
         IEnumerator MerchantWait(ServerRollSuccess massage)
         {
-            yield return new WaitForSeconds(UnityEngine.Random.Range(1f,2.5f));
+            yield return new WaitForSeconds(UnityEngine.Random.Range(1f, 2.5f));
 
             Merchant.EndCharge();
 
@@ -79,6 +79,10 @@ namespace UI
             if (OldItemPower.text == "0")
             {
                 OldItemImage.material = null;
+            }
+            else
+            {
+                OldItemImage.material = RarityMaterial;
             }
         }
 

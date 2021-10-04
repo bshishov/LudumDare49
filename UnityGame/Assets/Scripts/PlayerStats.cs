@@ -59,8 +59,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     private void GenerateId()
     {
-        //TODO remove T
-        PlayerID = SystemInfo.deviceUniqueIdentifier + "R"; // Android and Windows only
+        PlayerID = SystemInfo.deviceUniqueIdentifier; // Android and Windows only
         IdReceived?.Invoke();
         Save();
     }
