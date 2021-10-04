@@ -13,13 +13,10 @@ namespace UIP
         public void OnPointerDown(PointerEventData eventData)
         {
             Animator.SetBool(HoldParam, true);
-            Debug.Log("Down");
         }
         
         public void OnPointerUp(PointerEventData eventData)
         {
-
-            Debug.Log("Up");
             Animator.SetBool(HoldParam, false);
         }
 
