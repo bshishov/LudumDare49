@@ -12,6 +12,8 @@ namespace UI
     {
         public Merchant Merchant;
 
+        public Image ItemSlot;
+
         public ItemsSprite ItemsSprite;
         public GameObject NewItemRoot;
         public GameObject LeageButton;
@@ -76,6 +78,7 @@ namespace UI
                 }
             }
 
+            ItemSlot.sprite = PlayerEquip.GetSlotSprite(massage.rolled_item.item.slot);
             OldItemImage.sprite = PlayerEquip.GetItemSprite(massage.rolled_item.item.slot);
             OldItemImage.color = PlayerEquip.GetItemMaterialColor(massage.rolled_item.item.slot);
             OldItemPower.text = PlayerEquip.GetItemPower(massage.rolled_item.item.slot);
