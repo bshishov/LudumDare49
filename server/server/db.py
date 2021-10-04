@@ -53,6 +53,12 @@ class IPlayerDatabase(metaclass=ABCMeta):
     @abstractmethod
     def save_division(self, division: DivisionDbEntry): ...
 
+    @abstractmethod
+    def iter_all_divisions(self) -> Iterable[DivisionDbEntry]: ...
+
+    @abstractmethod
+    def clear_all_divisions(self): ...
+
 
 T = TypeVar("T")
 
@@ -97,11 +103,9 @@ class PickleDb(IPlayerDatabase):
                 yield player
 
     def iter_league_divisions(self, league_id: str) -> Iterable[DivisionDbEntry]:
-        for key in self._division_db.getall():
-            division = self._get_division(key)
-            if division:
-                if division.league_id == league_id:
-                    yield division
+        for division in self.iter_all_divisions():
+            if division.league_id == league_id:
+                yield division
 
     def save(self, entry: PlayerDbEntry):
         key = entry.key
@@ -110,3 +114,12 @@ class PickleDb(IPlayerDatabase):
     def save_division(self, division: DivisionDbEntry):
         key = division.id
         self._division_db[key] = spec.dump(division)
+
+    def iter_all_divisions(self) -> Iterable[DivisionDbEntry]:
+        for key in self._division_db.getall():
+            division = self._get_division(key)
+            if division:
+                yield division
+
+    def clear_all_divisions(self):
+        self._division_db.deldb()

@@ -67,6 +67,7 @@ class GameSettingsData:
     initial_gold: int = attrib(validator=positive_int)
     league_update_interval_seconds: float = attrib(validator=positive_float)
     max_players_per_division: int = attrib(validator=positive_int)
+    starting_league: str = attrib(validator=non_empty_string)
 
 
 @dataclass

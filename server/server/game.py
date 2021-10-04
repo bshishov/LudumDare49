@@ -83,6 +83,7 @@ class Player:
     items: List[RolledItem]
     current_undecided_roll_item: Optional[RolledItem]
     division_id: str
+    league_id: str = "wooden"
     # last_activity: datetime
 
     @property
@@ -123,7 +124,7 @@ class Game:
             leagues: List[LeagueData]
     ):
         self._leagues = leagues
-        self._settings = settings
+        self.settings = settings
         self._items: Mapping[str, ItemData] = {item.id: item for item in items}
         self._merchants: Mapping[str, MerchantData] = {m.id: m for m in merchants}
 
@@ -133,21 +134,22 @@ class Game:
 
     @property
     def income_update_interval(self):
-        return self._settings.income_period_seconds
+        return self.settings.income_period_seconds
 
-    def create_new_player(self, username: str, division_id: str) -> Player:
+    def create_new_player(self, username: str, division_id: str, league_id: str) -> Player:
         return Player(
             username=username,
-            gold=self._settings.initial_gold,
+            gold=self.settings.initial_gold,
             items=[],
             last_gold_update_time=datetime.now(),
             current_undecided_roll_item=None,
-            division_id=division_id
+            division_id=division_id,
+            league_id=league_id
         )
 
     def update_player_gold(self, player: Player):
         player.last_gold_updated_time = datetime.now()
-        player.gold += round(player.total_power * self._settings.power_income_multiplier)
+        player.gold += round(player.total_power * self.settings.power_income_multiplier)
 
     def roll_item(self, merchant: MerchantData) -> RolledItem:
         item_probabilities = np.array(list(i.probability for i in merchant.items), np.float32)
@@ -219,7 +221,7 @@ class Game:
     def generate_division_standings(self) -> DivisionInfo:
         league = random.choice(self._leagues)
 
-        n = self._settings.max_players_per_division
+        n = self.settings.max_players_per_division
         powers = list(sorted([random.randint(100, 2000) for _ in range(n)], reverse=True))
         division_players = []
 
@@ -236,3 +238,9 @@ class Game:
             players=division_players,
             next_update_at=datetime.now() + timedelta(hours=1, minutes=45)
         )
+
+    def get_league(self, league_id: str) -> Optional[LeagueData]:
+        for league in self._leagues:
+            if league.id == league_id:
+                return league
+        return None
