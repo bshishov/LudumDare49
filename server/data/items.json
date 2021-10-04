@@ -1,31 +1,37 @@
 [
   {
-    "id": "cocked_hat_common",
+    "id": "bucket_common",
     "power": 7,
     "slot": "head",
     "rarity": "common"
   },
   {
-    "id": "sombrero_uncommon",
+    "id": "cocked_hat_common",
     "power": 8,
+    "slot": "head",
+    "rarity": "common"
+  },
+  {
+    "id": "sombrero_uncommon",
+    "power": 9,
     "slot": "head",
     "rarity": "uncommon"
   },
   {
     "id": "shrek_hat_rare",
-    "power": 9,
+    "power": 10,
     "slot": "head",
     "rarity": "rare"
   },
   {
     "id": "horned_helmet_epic",
-    "power": 10,
+    "power": 12,
     "slot": "head",
     "rarity": "epic"
   },
   {
     "id": "astronaut_helmet_legendary",
-    "power": 12,
+    "power": 15,
     "slot": "head",
     "rarity": "legendary"
   },
@@ -36,26 +42,32 @@
     "rarity": "common"
   },
   {
-    "id": "tshirt_uncommon",
+    "id": "tshirt_common",
     "power": 10,
+    "slot": "body",
+    "rarity": "common"
+  },
+  {
+    "id": "cape_uncommon",
+    "power": 11,
     "slot": "body",
     "rarity": "uncommon"
   },
   {
     "id": "crab_rare",
-    "power": 11,
+    "power": 12,
     "slot": "body",
     "rarity": "rare"
   },
   {
     "id": "sumo_epic",
-    "power": 12,
+    "power": 14,
     "slot": "body",
     "rarity": "epic"
   },
   {
     "id": "dino_legendary",
-    "power": 14,
+    "power": 17,
     "slot": "body",
     "rarity": "legendary"
   },
@@ -66,26 +78,32 @@
     "rarity": "common"
   },
   {
-    "id": "shoe_uncommon",
+    "id": "shoe_common",
     "power": 8,
+    "slot": "boots",
+    "rarity": "common"
+  },
+  {
+    "id": "rollers_uncommon",
+    "power": 9,
     "slot": "boots",
     "rarity": "uncommon"
   },
   {
-    "id": "rollers_rare",
-    "power": 9,
+    "id": "ski_rare",
+    "power": 10,
     "slot": "boots",
     "rarity": "rare"
   },
   {
     "id": "ankle_epic",
-    "power": 10,
+    "power": 12,
     "slot": "boots",
     "rarity": "epic"
   },
   {
     "id": "armor_legendary",
-    "power": 12,
+    "power": 15,
     "slot": "boots",
     "rarity": "legendary"
   },
@@ -96,26 +114,32 @@
     "rarity": "common"
   },
   {
-    "id": "logo_ld_uncommon",
+    "id": "logo_ld_common",
     "power": 6,
+    "slot": "trinket",
+    "rarity": "common"
+  },
+  {
+    "id": "crystal_uncommon",
+    "power": 7,
     "slot": "trinket",
     "rarity": "uncommon"
   },
   {
-    "id": "crystal_rare",
-    "power": 7,
+    "id": "new_item_19_rare",
+    "power": 8,
     "slot": "trinket",
     "rarity": "rare"
   },
   {
-    "id": "new_item_19_epic",
-    "power": 8,
+    "id": "illuminati_epic",
+    "power": 10,
     "slot": "trinket",
     "rarity": "epic"
   },
   {
-    "id": "illuminati_legendary",
-    "power": 10,
+    "id": "company_legendary",
+    "power": 13,
     "slot": "trinket",
     "rarity": "legendary"
   },
@@ -126,26 +150,32 @@
     "rarity": "common"
   },
   {
-    "id": "fork_uncommon",
+    "id": "fork_common",
     "power": 12,
+    "slot": "weapon",
+    "rarity": "common"
+  },
+  {
+    "id": "dagger_uncommon",
+    "power": 13,
     "slot": "weapon",
     "rarity": "uncommon"
   },
   {
-    "id": "dagger_rare",
-    "power": 13,
+    "id": "bow_rare",
+    "power": 14,
     "slot": "weapon",
     "rarity": "rare"
   },
   {
-    "id": "bow_epic",
-    "power": 14,
+    "id": "mace_epic",
+    "power": 16,
     "slot": "weapon",
     "rarity": "epic"
   },
   {
-    "id": "mace_legendary",
-    "power": 16,
+    "id": "hammer_legendary",
+    "power": 19,
     "slot": "weapon",
     "rarity": "legendary"
   }

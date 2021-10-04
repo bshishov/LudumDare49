@@ -11,104 +11,124 @@
     },
     "items": [
       {
+        "item": "bucket_common",
+        "probability": 0.106
+      },
+      {
         "item": "cocked_hat_common",
-        "probability": 0.1
+        "probability": 0.05
       },
       {
         "item": "sombrero_uncommon",
-        "probability": 0.05
+        "probability": 0.024
       },
       {
         "item": "shrek_hat_rare",
-        "probability": 0.026
+        "probability": 0.012
       },
       {
         "item": "horned_helmet_epic",
-        "probability": 0.014
+        "probability": 0.006
       },
       {
         "item": "astronaut_helmet_legendary",
-        "probability": 0.01
+        "probability": 0.002
       },
       {
         "item": "maid_common",
-        "probability": 0.075
+        "probability": 0.0795
       },
       {
-        "item": "tshirt_uncommon",
+        "item": "tshirt_common",
         "probability": 0.0375
       },
       {
+        "item": "cape_uncommon",
+        "probability": 0.018
+      },
+      {
         "item": "crab_rare",
-        "probability": 0.0195
+        "probability": 0.009
       },
       {
         "item": "sumo_epic",
-        "probability": 0.0105
+        "probability": 0.0045
       },
       {
         "item": "dino_legendary",
-        "probability": 0.0075
+        "probability": 0.0015
       },
       {
         "item": "brick_common",
-        "probability": 0.1
+        "probability": 0.106
       },
       {
-        "item": "shoe_uncommon",
+        "item": "shoe_common",
         "probability": 0.05
       },
       {
-        "item": "rollers_rare",
-        "probability": 0.026
+        "item": "rollers_uncommon",
+        "probability": 0.024
+      },
+      {
+        "item": "ski_rare",
+        "probability": 0.012
       },
       {
         "item": "ankle_epic",
-        "probability": 0.014
+        "probability": 0.006
       },
       {
         "item": "armor_legendary",
-        "probability": 0.01
+        "probability": 0.002
       },
       {
         "item": "donut_common",
-        "probability": 0.175
+        "probability": 0.1855
       },
       {
-        "item": "logo_ld_uncommon",
+        "item": "logo_ld_common",
         "probability": 0.0875
       },
       {
-        "item": "crystal_rare",
-        "probability": 0.0455
+        "item": "crystal_uncommon",
+        "probability": 0.042
       },
       {
-        "item": "new_item_19_epic",
-        "probability": 0.0245
+        "item": "new_item_19_rare",
+        "probability": 0.021
       },
       {
-        "item": "illuminati_legendary",
-        "probability": 0.0175
+        "item": "illuminati_epic",
+        "probability": 0.0105
+      },
+      {
+        "item": "company_legendary",
+        "probability": 0.0035
       },
       {
         "item": "fan_common",
-        "probability": 0.05
+        "probability": 0.053
       },
       {
-        "item": "fork_uncommon",
+        "item": "fork_common",
         "probability": 0.025
       },
       {
-        "item": "dagger_rare",
-        "probability": 0.013
+        "item": "dagger_uncommon",
+        "probability": 0.012
       },
       {
-        "item": "bow_epic",
-        "probability": 0.007
+        "item": "bow_rare",
+        "probability": 0.006
       },
       {
-        "item": "mace_legendary",
-        "probability": 0.005
+        "item": "mace_epic",
+        "probability": 0.003
+      },
+      {
+        "item": "hammer_legendary",
+        "probability": 0.001
       }
     ]
   }
