@@ -9,6 +9,7 @@ namespace UI
     public class UIRoll : MonoBehaviour
     {
         public GameObject RollButton;
+        public Merchant Merchant;
 
         private void Start()
         {
@@ -18,7 +19,8 @@ namespace UI
         }
 
         private void OnServerRollSuccess(ServerRollSuccess obj)
-        { 
+        {
+            Merchant.BeginCharge();
             RollButton.SetActive(false);
         }
 

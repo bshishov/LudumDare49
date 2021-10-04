@@ -3,13 +3,15 @@ using Network.Messages;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System.Collections.Generic;
 using System;
+using System.Collections;
 
 namespace UI
 {
     public class UIRolledItem : MonoBehaviour
     {
+        public Merchant Merchant;
+
         public ItemsSprite ItemsSprite;
         public GameObject NewItemRoot;
 
@@ -35,6 +37,17 @@ namespace UI
 
         private void OnServerRollSuccess(ServerRollSuccess massage)
         {
+            StartCoroutine(MerchantWait(massage));
+        }
+
+        IEnumerator MerchantWait(ServerRollSuccess massage)
+        {
+            yield return new WaitForSeconds(UnityEngine.Random.Range(1f,2.5f));
+
+            Merchant.EndCharge();
+
+            yield return new WaitForSeconds(0.25f);
+
             NewItemRoot.SetActive(true);
 
             ActivateBackground(massage);
@@ -50,21 +63,23 @@ namespace UI
                 {
                     if (ItemsSprite.AllItems[j].ID[k] == massage.rolled_item.item.id)
                     {
-
                         for (int i = 0; i < NewItemImage.Length; i++)
                         {
                             var indexOfRarity = (int)Enum.Parse(typeof(ItemRarity), massage.rolled_item.item.rarity);
                             NewItemImage[i].color = ItemsSprite.RarityColor[indexOfRarity];
                             NewItemImage[i].sprite = ItemsSprite.AllItems[j].Image;
                         }
-
                     }
                 }
             }
 
-           OldItemImage.sprite = PlayerEquip.GetItemSprite(massage.rolled_item.item.slot);
+            OldItemImage.sprite = PlayerEquip.GetItemSprite(massage.rolled_item.item.slot);
             OldItemImage.color = PlayerEquip.GetItemMaterialColor(massage.rolled_item.item.slot);
             OldItemPower.text = PlayerEquip.GetItemPower(massage.rolled_item.item.slot);
+            if (OldItemPower.text == "0")
+            {
+                OldItemImage.material = null;
+            }
         }
 
         private void SetNewItemPower(ServerRollSuccess massage)
