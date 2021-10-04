@@ -143,7 +143,7 @@ def main(host: str, port: int, data_path: str):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--port', type=int, default=6789, help='Port')
-    parser.add_argument('--host', type=str, default='localhost', help='WebSockets host')
+    parser.add_argument('--host', type=str, default='0.0.0.0', help='WebSockets host')
     parser.add_argument('--data', type=str, default='data/', help='path to game data')
     arguments = parser.parse_args()
     main(arguments.host, arguments.port, arguments.data)
