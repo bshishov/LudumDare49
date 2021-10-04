@@ -28,7 +28,7 @@ public class PlayerEquip : MonoBehaviour
             {
                 if (rolledItem.item.slot == SlotsTypeOrder[i].ToString())
                 {
-                    SlotsPower[i].text = rolledItem.item.power.ToString();
+                    SlotsPower[i].text = rolledItem.total_power.ToString();
                     for (int j = 0; j < ItemsSprite.AllItems.Count; j++)
                     {
                         for (int k = 0; k < ItemsSprite.AllItems[j].ID.Length; k++)
