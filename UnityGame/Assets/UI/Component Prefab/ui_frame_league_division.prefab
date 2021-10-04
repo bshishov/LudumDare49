@@ -329,6 +329,7 @@ RectTransform:
   - {fileID: 1440823068106377098}
   - {fileID: 7269775892080165159}
   - {fileID: 3939727308320617993}
+  - {fileID: 2259795889967947892}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -707,6 +708,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8590104413051060110}
   m_CullTransparentMesh: 1
+--- !u!1001 &705883995036178291
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4617554056617496582}
+    m_Modifications:
+    - target: {fileID: 1627951911941355271, guid: 4b307f9a2ab7a8c42875c0289b38f4a0, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1627951911941355271, guid: 4b307f9a2ab7a8c42875c0289b38f4a0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1627951911941355271, guid: 4b307f9a2ab7a8c42875c0289b38f4a0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1627951911941355271, guid: 4b307f9a2ab7a8c42875c0289b38f4a0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1627951911941355271, guid: 4b307f9a2ab7a8c42875c0289b38f4a0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -118
+      objectReference: {fileID: 0}
+    - target: {fileID: 1627951911941355271, guid: 4b307f9a2ab7a8c42875c0289b38f4a0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -297
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4b307f9a2ab7a8c42875c0289b38f4a0, type: 3}
+--- !u!224 &2259795889967947892 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1627951911941355271, guid: 4b307f9a2ab7a8c42875c0289b38f4a0, type: 3}
+  m_PrefabInstance: {fileID: 705883995036178291}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2944214095384377724
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -848,7 +887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2195304723975655285, guid: bc86869e9049f9046bed101af2898ac2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 49
+      value: 108
       objectReference: {fileID: 0}
     - target: {fileID: 2195304723975655285, guid: bc86869e9049f9046bed101af2898ac2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
