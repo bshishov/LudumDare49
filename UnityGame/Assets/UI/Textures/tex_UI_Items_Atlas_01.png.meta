@@ -77,6 +77,21 @@ TextureImporter:
   - first:
       213: -8094714545451684176
     second: tex_UI_Items_Trinket_05
+  - first:
+      213: 7176008987929040414
+    second: tex_UI_Items_Atlas_01_0
+  - first:
+      213: 5701605271896286867
+    second: tex_UI_Items_Atlas_01_1
+  - first:
+      213: 2231530359905435707
+    second: tex_UI_Items_Atlas_01_2
+  - first:
+      213: 8046014867560653875
+    second: tex_UI_Items_Atlas_01_3
+  - first:
+      213: -3857561855097082282
+    second: tex_UI_Items_Atlas_01_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -194,7 +209,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1024
+        y: 1280
         width: 256
         height: 256
       alignment: 0
@@ -214,8 +229,8 @@ TextureImporter:
       name: tex_UI_Items_Weapon_01
       rect:
         serializedVersion: 2
-        x: 258
-        y: 1024
+        x: 256
+        y: 1280
         width: 256
         height: 256
       alignment: 0
@@ -236,7 +251,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 512
-        y: 1024
+        y: 1280
         width: 256
         height: 256
       alignment: 0
@@ -257,7 +272,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 768
-        y: 1024
+        y: 1280
         width: 256
         height: 256
       alignment: 0
@@ -278,7 +293,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1024
-        y: 1024
+        y: 1280
         width: 256
         height: 256
       alignment: 0
@@ -299,7 +314,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 768
+        y: 1023
         width: 256
         height: 256
       alignment: 0
@@ -320,7 +335,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 768
+        y: 1023
         width: 256
         height: 256
       alignment: 0
@@ -341,7 +356,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 512
-        y: 768
+        y: 1024
         width: 256
         height: 256
       alignment: 0
@@ -362,7 +377,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 768
-        y: 768
+        y: 1024
         width: 256
         height: 256
       alignment: 0
@@ -383,7 +398,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1024
-        y: 768
+        y: 1025
         width: 256
         height: 256
       alignment: 0
@@ -404,7 +419,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 512
+        y: 767
         width: 256
         height: 256
       alignment: 0
@@ -425,7 +440,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 512
+        y: 767
         width: 256
         height: 256
       alignment: 0
@@ -446,7 +461,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 512
-        y: 512
+        y: 767
         width: 256
         height: 256
       alignment: 0
@@ -467,7 +482,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 768
-        y: 512
+        y: 769
         width: 256
         height: 256
       alignment: 0
@@ -488,7 +503,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1024
-        y: 512
+        y: 767
         width: 256
         height: 256
       alignment: 0
@@ -509,7 +524,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
+        y: 510
         width: 256
         height: 256
       alignment: 0
@@ -530,7 +545,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 256
+        y: 510
         width: 256
         height: 256
       alignment: 0
@@ -550,8 +565,8 @@ TextureImporter:
       name: tex_UI_Items_Body_04
       rect:
         serializedVersion: 2
-        x: 512
-        y: 256
+        x: 513
+        y: 511
         width: 256
         height: 256
       alignment: 0
@@ -571,8 +586,8 @@ TextureImporter:
       name: tex_UI_Items_Boots_04
       rect:
         serializedVersion: 2
-        x: 768
-        y: 256
+        x: 769
+        y: 511
         width: 256
         height: 256
       alignment: 0
@@ -593,7 +608,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1024
-        y: 256
+        y: 511
         width: 256
         height: 256
       alignment: 0
@@ -613,8 +628,8 @@ TextureImporter:
       name: tex_UI_Items_Head_05
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 1
+        y: 253
         width: 256
         height: 256
       alignment: 0
@@ -634,8 +649,8 @@ TextureImporter:
       name: tex_UI_Items_Weapon_05
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
+        x: 252
+        y: 251
         width: 256
         height: 256
       alignment: 0
@@ -655,12 +670,12 @@ TextureImporter:
       name: tex_UI_Items_Body_05
       rect:
         serializedVersion: 2
-        x: 512
-        y: 0
+        x: 510
+        y: 256
         width: 256
         height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.48245335, y: 0.6754668}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -677,7 +692,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 768
-        y: 0
+        y: 254
         width: 256
         height: 256
       alignment: 0
@@ -697,8 +712,8 @@ TextureImporter:
       name: tex_UI_Items_Trinket_05
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 0
+        x: 1023
+        y: 254
         width: 256
         height: 256
       alignment: 0
@@ -710,6 +725,111 @@ TextureImporter:
       bones: []
       spriteID: 0be2a20320cc9af80800000000000000
       internalID: -8094714545451684176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tex_UI_Items_Atlas_01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e165586872e469360800000000000000
+      internalID: 7176008987929040414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tex_UI_Items_Atlas_01_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3966fd059cb202f40800000000000000
+      internalID: 5701605271896286867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tex_UI_Items_Atlas_01_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b30c9a70a0df7fe10800000000000000
+      internalID: 2231530359905435707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tex_UI_Items_Atlas_01_3
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 334e67674ef29af60800000000000000
+      internalID: 8046014867560653875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tex_UI_Items_Atlas_01_4
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 0
+        width: 254
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65e67d75eef277ac0800000000000000
+      internalID: -3857561855097082282
       vertices: []
       indices: 
       edges: []
