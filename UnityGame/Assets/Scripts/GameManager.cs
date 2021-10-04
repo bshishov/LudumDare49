@@ -1,4 +1,5 @@
 using System;
+using Audio;
 using Network;
 using Network.Messages;
 using UI.Scripts;
@@ -9,6 +10,8 @@ using Utils;
 [RequireComponent(typeof(FrameManager))]
 public class GameManager : Singleton<GameManager>
 {
+    [Header("Music")] public SoundAsset Music;
+    
     [Header("UI")]
     public FrameData LoginFrame;
     public FrameData GameFrame;
@@ -26,6 +29,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
+        SoundManager.Instance.Play(Music);
         _frameManager = GetComponent<FrameManager>();
 
         // Todo: subscribe to connection

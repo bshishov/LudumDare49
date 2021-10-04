@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7c7508170bc487ebb422db540e3b498, type: 3}
-  m_Name: sfx_forge
+  m_Name: sfx_music
   m_EditorClassIdentifier: 
-  Clip: {fileID: 8300000, guid: feaf59a2a88a2b944a8067f99b23750b, type: 3}
-  Loop: 0
-  MixerGroup: {fileID: -9035450551968300087, guid: f042ef4b1d77f3746852b0b0aaeb10f7, type: 2}
-  VolumeModifier: 1
+  Clip: {fileID: 8300000, guid: 6eed20521ef216d41878708f03f0eec8, type: 3}
+  Loop: 1
+  MixerGroup: {fileID: 2473363252047892442, guid: f042ef4b1d77f3746852b0b0aaeb10f7, type: 2}
+  VolumeModifier: 0.5
   Delay: 0
   RandomizeDelay: 0
   MaxAdditionalDelay: 0

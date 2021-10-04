@@ -76,7 +76,10 @@ class Application:
             msg.ClientDeclineRoll: self.on_player_decline,
             msg.ClientDivisionInfoRequest: self.on_client_division_info_request,
         }
-        self._next_league_update_at = datetime.datetime.now()
+        self._next_league_update_at = (
+                datetime.datetime.now() +
+                datetime.timedelta(seconds=self._game.settings.league_update_interval_seconds)
+        )
 
     @asynccontextmanager
     async def player_change(self, connection: PlayerConnection) -> Player:
@@ -248,8 +251,7 @@ class Application:
                     _logger.error(err)
 
     async def league_update_routine(self):
-        # interval_seconds = self._game.settings.league_update_interval_seconds
-        interval_seconds = 60
+        interval_seconds = self._game.settings.league_update_interval_seconds
 
         while True:
             await asyncio.sleep(interval_seconds)
@@ -266,24 +268,30 @@ class Application:
                 except Exception as err:
                     _logger.error(f"Failed to calculate league: {err}", exc_info=True)
 
-            _logger.info("Notifying connected players")
-            for connection in self._active_connections:
-                db_player = connection.player_entry
-                if not db_player:
-                    continue
-                if not db_player.player:
-                    continue
+                _logger.info("Notifying connected players")
+                for connection in self._active_connections:
+                    # Not authorized yet
+                    db_player = connection.player_entry
+                    if not db_player:
+                        continue
 
-                try:
-                    division_info = get_division_info(
-                        player=db_player.player,
-                        db=self._db,
-                        next_update_at=self._next_league_update_at
-                    )
-                    connection.send(msg.ServerDivisionInfo(division_info))
-                except Exception as err:
-                    _logger.error(f"Failed to calculate division info: {err}", exc_info=True)
-                    connection.send(msg.ServerError(error="division_info_error"))
+                    # Update player since we changed it
+                    db_player = self._db.find(db_player.key)
+                    connection.set_player_entry(db_player)
+
+                    if not db_player.player:
+                        continue
+
+                    try:
+                        division_info = get_division_info(
+                            player=db_player.player,
+                            db=self._db,
+                            next_update_at=self._next_league_update_at
+                        )
+                        connection.send(msg.ServerDivisionInfo(division_info))
+                    except Exception as err:
+                        _logger.error(f"Failed to calculate division info: {err}", exc_info=True)
+                        connection.send(msg.ServerError(error="division_info_error"))
 
 
 def get_division_info(
@@ -369,11 +377,7 @@ def update_leagues(game: Game, db: IPlayerDatabase):
         league = game.get_league(league_id) or default_league
         _logger.info(f"processing league: {league.id} with {len(db_players)} players")
 
-        division = DivisionDbEntry(
-            id=random_id(),
-            league_id=league.id,
-            player_ids=[]
-        )
+        division = DivisionDbEntry(id=random_id(), league_id=league.id, player_ids=[])
 
         for db_player in db_players:
             db_player.player.league_id = league.id
@@ -384,10 +388,6 @@ def update_leagues(game: Game, db: IPlayerDatabase):
 
             if len(division.player_ids) >= game.settings.max_players_per_division:
                 db.save_division(division)
-                division = DivisionDbEntry(
-                    id=random_id(),
-                    league_id=league.id,
-                    player_ids=[]
-                )
+                division = DivisionDbEntry(id=random_id(), league_id=league.id, player_ids=[])
 
         db.save_division(division)

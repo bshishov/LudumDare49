@@ -27,8 +27,13 @@ namespace UI
             
             RefreshButton.onClick.AddListener(RequestDivisionInfo);
 
-            RequestDivisionInfo();
+            //RequestDivisionInfo();
             PlayerList.Clear();
+        }
+
+        private void OnEnable()
+        {
+            RequestDivisionInfo();
         }
 
         [ContextMenu("Request division")]

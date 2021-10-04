@@ -2,7 +2,8 @@
   "income_period_seconds": 120.0,
   "power_income_multiplier": 2.0,
   "initial_gold": 1500,
-  "league_update_interval_seconds": 86400,
+  "league_update_interval_seconds_old": 86400,
+  "league_update_interval_seconds": 300,
   "max_players_per_division": 10,
   "starting_league": "wooden"
 }

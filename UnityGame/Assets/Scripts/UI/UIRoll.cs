@@ -45,9 +45,10 @@ namespace UI
         }
 
         private void OnServerError(ServerError obj)
-        {
+        {            
             if (obj.error == "not_enough_gold")
             {
+                SoundManager.Instance.Play(NoMoneySound);
                 NotEnough.SetActive(true);
             }
         }

@@ -149,7 +149,8 @@ class Game:
 
     def update_player_gold(self, player: Player):
         player.last_gold_updated_time = datetime.now()
-        player.gold += round(player.total_power * self.settings.power_income_multiplier)
+        # player.gold += round(player.total_power * self.settings.power_income_multiplier)
+        player.gold += 500
 
     def roll_item(self, merchant: MerchantData) -> RolledItem:
         item_probabilities = np.array(list(i.probability for i in merchant.items), np.float32)

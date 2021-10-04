@@ -6,52 +6,22 @@
     "rarity": "common"
   },
   {
-    "id": "sombrero_uncommon",
+    "id": "sombreroshrek_hat_uncommon",
     "power": 8,
     "slot": "head",
     "rarity": "uncommon"
   },
   {
-    "id": "cocked_hat_uncommon",
+    "id": "horned_helmet_rare",
     "power": 9,
     "slot": "head",
-    "rarity": "uncommon"
+    "rarity": "rare"
   },
   {
-    "id": "shrek_hat_rare",
+    "id": "astronaut_helmet_epic",
     "power": 10,
     "slot": "head",
-    "rarity": "rare"
-  },
-  {
-    "id": "sombrero_rare",
-    "power": 12,
-    "slot": "head",
-    "rarity": "rare"
-  },
-  {
-    "id": "horned_helmet_epic",
-    "power": 15,
-    "slot": "head",
     "rarity": "epic"
-  },
-  {
-    "id": "shrek_hat_epic",
-    "power": 18,
-    "slot": "head",
-    "rarity": "epic"
-  },
-  {
-    "id": "horned_helmet_legendary",
-    "power": 21,
-    "slot": "head",
-    "rarity": "legendary"
-  },
-  {
-    "id": "astronaut_helmet_legendary",
-    "power": 23,
-    "slot": "head",
-    "rarity": "legendary"
   },
   {
     "id": "maid_common",
@@ -66,44 +36,20 @@
     "rarity": "uncommon"
   },
   {
-    "id": "maid_uncommon",
-    "power": 11,
-    "slot": "body",
-    "rarity": "uncommon"
-  },
-  {
     "id": "crab_rare",
-    "power": 12,
-    "slot": "body",
-    "rarity": "rare"
-  },
-  {
-    "id": "tshirt_rare",
-    "power": 14,
+    "power": 11,
     "slot": "body",
     "rarity": "rare"
   },
   {
     "id": "sumo_epic",
-    "power": 17,
+    "power": 12,
     "slot": "body",
     "rarity": "epic"
-  },
-  {
-    "id": "crab_epic",
-    "power": 20,
-    "slot": "body",
-    "rarity": "epic"
-  },
-  {
-    "id": "sumo_legendary",
-    "power": 23,
-    "slot": "body",
-    "rarity": "legendary"
   },
   {
     "id": "dino_legendary",
-    "power": 25,
+    "power": 14,
     "slot": "body",
     "rarity": "legendary"
   },
@@ -120,44 +66,20 @@
     "rarity": "uncommon"
   },
   {
-    "id": "brick_uncommon",
+    "id": "rollers_rare",
     "power": 9,
     "slot": "boots",
-    "rarity": "uncommon"
-  },
-  {
-    "id": "ankle_rare",
-    "power": 10,
-    "slot": "boots",
     "rarity": "rare"
-  },
-  {
-    "id": "shoe_rare",
-    "power": 12,
-    "slot": "boots",
-    "rarity": "rare"
-  },
-  {
-    "id": "rollers_epic",
-    "power": 15,
-    "slot": "boots",
-    "rarity": "epic"
   },
   {
     "id": "ankle_epic",
-    "power": 18,
+    "power": 10,
     "slot": "boots",
     "rarity": "epic"
   },
   {
-    "id": "rollers_legendary",
-    "power": 21,
-    "slot": "boots",
-    "rarity": "legendary"
-  },
-  {
     "id": "armor_legendary",
-    "power": 23,
+    "power": 12,
     "slot": "boots",
     "rarity": "legendary"
   },
@@ -174,44 +96,20 @@
     "rarity": "uncommon"
   },
   {
-    "id": "donut_uncommon",
-    "power": 7,
-    "slot": "trinket",
-    "rarity": "uncommon"
-  },
-  {
     "id": "crystal_rare",
-    "power": 8,
-    "slot": "trinket",
-    "rarity": "rare"
-  },
-  {
-    "id": "logo_ld_rare",
-    "power": 10,
+    "power": 7,
     "slot": "trinket",
     "rarity": "rare"
   },
   {
     "id": "new_item_19_epic",
-    "power": 13,
+    "power": 8,
     "slot": "trinket",
     "rarity": "epic"
-  },
-  {
-    "id": "crystal_epic",
-    "power": 16,
-    "slot": "trinket",
-    "rarity": "epic"
-  },
-  {
-    "id": "new_item_19_legendary",
-    "power": 19,
-    "slot": "trinket",
-    "rarity": "legendary"
   },
   {
     "id": "illuminati_legendary",
-    "power": 21,
+    "power": 10,
     "slot": "trinket",
     "rarity": "legendary"
   },
@@ -228,44 +126,20 @@
     "rarity": "uncommon"
   },
   {
-    "id": "fan_uncommon",
-    "power": 13,
-    "slot": "weapon",
-    "rarity": "uncommon"
-  },
-  {
     "id": "dagger_rare",
-    "power": 14,
-    "slot": "weapon",
-    "rarity": "rare"
-  },
-  {
-    "id": "fork_rare",
-    "power": 16,
+    "power": 13,
     "slot": "weapon",
     "rarity": "rare"
   },
   {
     "id": "bow_epic",
-    "power": 19,
+    "power": 14,
     "slot": "weapon",
     "rarity": "epic"
-  },
-  {
-    "id": "dagger_epic",
-    "power": 22,
-    "slot": "weapon",
-    "rarity": "epic"
-  },
-  {
-    "id": "bow_legendary",
-    "power": 25,
-    "slot": "weapon",
-    "rarity": "legendary"
   },
   {
     "id": "mace_legendary",
-    "power": 27,
+    "power": 16,
     "slot": "weapon",
     "rarity": "legendary"
   }
